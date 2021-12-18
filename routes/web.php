@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('School');
 });
+
+Route::get('/ItemAdd', function () {
+    return view('Itemadd');
+});
