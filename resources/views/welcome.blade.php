@@ -44,7 +44,7 @@
                 <a href="">
                     <div class="card text-center">
                         <div class="card-header  l-bg-orange-dark">
-                            <h3 class=" mt-2">Rooms Reservations</h3>
+                            <h3 class=" mt-2">Rooms Reservation</h3>
                         </div>
                         <div class="card-body">
                             <img src="/SystemIMG/rooms.png" width="100%;" alt="">
