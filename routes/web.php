@@ -18,6 +18,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// HR Section
+Route::get('/HRsection', function () {
+    return view('HR.HRdashboard');
+});
+
+
+
+Route::get('/department', function () {
+    return view('HR.department');
+});
+
+// department
+Route::post('/saveDepData',[App\Http\Controllers\departmentController::class, 'save']);
+
+//jbroles
+Route::post('/jbrolesave',[App\Http\Controllers\jbRoleController::class,'save']);
+Route::get('/jbroles',[App\Http\Controllers\jbRoleController::class,'pageOpen']);
+
+//employees
+Route::get('/employees',[App\Http\Controllers\employeeController::class,'pageopen']);
+Route::post('/empSave',[App\Http\Controllers\employeeController::class,'empsave']);
+
+
+Route::get('/getRole/getPro/{id}',[App\Http\Controllers\employeeController::class, 'getRole']);
+
+// end HR section
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

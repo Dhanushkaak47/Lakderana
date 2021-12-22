@@ -25,11 +25,11 @@
 
     <div class="container-fluid mt-5 font-weight-bold text-uppercase">
         <div class="row justify-content-center">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <a href="">
                     <div class="card text-center">
                         <div class="card-header l-bg-orange-dark">
-                            <h3 class=" mt-2">Customer Details</h3>
+                            <p class=" mt-2">Customer Details</p>
                         </div>
                         <div class="card-body">
                             <img src="/SystemIMG/customer.png" width="100%;" alt="">
@@ -40,11 +40,11 @@
                 </a> 
                 
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <a href="">
                     <div class="card text-center">
                         <div class="card-header  l-bg-orange-dark">
-                            <h3 class=" mt-2">Rooms Reservation</h3>
+                            <p class=" mt-2">Rooms Reservation</p>
                         </div>
                         <div class="card-body">
                             <img src="/SystemIMG/rooms.png" width="100%;" alt="">
@@ -55,11 +55,11 @@
                 </a> 
                 
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <a href="">
                     <div class="card text-center">
                         <div class="card-header l-bg-orange-dark">
-                            <h3 class=" mt-2">Bar Management</h3>
+                            <p class=" mt-2">Liqor Bar</p>
                         </div>
                         <div class="card-body">
                             <img src="/SystemIMG/bar.png" width="100%;" alt="">
@@ -68,11 +68,11 @@
                 </a> 
                 
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <a href="">
                     <div class="card text-center ">
                         <div class="card-header l-bg-orange-dark">
-                            <h3 class=" mt-2">Attendance</h3>
+                            <p class=" mt-2">Attendance</p>
                         </div>
                         <div class="card-body">
                             <img src="/SystemIMG/finger.png" width="100%;" alt="">
@@ -80,11 +80,11 @@
                     </div>
                 </a> 
             </div>
-            <div class="col-md-3 ">
-                <a href="">
+            <div class="col-md-2 ">
+                <a href="/HRsection">
                     <div class="card text-center">
                         <div class="card-header l-bg-orange-dark">
-                            <h3 class=" mt-2">HR Section</h3>
+                            <p class=" mt-2">HR Section</p>
                         </div>
                         <div class="card-body">
                             <img src="/SystemIMG/271300.png" width="100%;" alt="">
