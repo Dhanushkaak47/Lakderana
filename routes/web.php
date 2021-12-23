@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/ItemAdd', function () {
     return view('Itemadd');
 });
+
+Route::get('/CatAdd', function () {
+    return view('catadd');
+});

@@ -10,13 +10,16 @@
           <ul class="navbar-nav">
            
             <li class="nav-item">
-              <a class="nav-link " href="/">Item Add</a>
+              <a class="nav-link " href="/ItemAdd">Item Add</a>
             </li>
             <li class="nav-item">
               <a class="nav-link " href="/">Supplier Manage</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="/">Categories</a>
+              <a class="nav-link " href="/CatAdd">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="/">Sales Items</a>
             </li>
             <li class="nav-item">
               <a class="nav-link " href="/">Reports</a>
