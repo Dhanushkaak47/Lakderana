@@ -23,4 +23,10 @@ class departmentController extends Controller
 
         return redirect()->back();
     }
+
+    public function pageopen()
+    {
+        $departmentData = department::all();
+        return view('HR.department', compact('departmentData'));
+    }
 }

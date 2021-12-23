@@ -13,15 +13,8 @@
     <link rel="stylesheet" href="css/card.css">
 </head>
 <body>
-    <div class="container mt-4">
-        <div class="row justify-content-center">
-            <div class="card">
-                <div class="col-md-12 text-center">
-                    <img src="/SystemIMG/lakLogo.jpg" width="100%;" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('include.logo')
+
     @include('include.HRnavbar')
 
     <div class="container mt-5">
@@ -40,29 +33,20 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Job Role</th>
+                        <th scope="col">Department</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
+                        @foreach($rolesdata as $data)
+                        <tr>
+                            <td>{{$data->id}}</td>
+                            <td>{{$data->rolename}}</td>
+                            <td>{{$data->departmentName}}</td>
+                            <td><a href="#"><i class="fa fa-pencil-square text-warning" aria-hidden="true"></i></a></td>
+                            <td><a href="#"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
+                        </tr>
+                        @endforeach
                     </tbody>
                   </table>
             </div>

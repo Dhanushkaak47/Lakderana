@@ -23,14 +23,15 @@ Route::get('/HRsection', function () {
     return view('HR.HRdashboard');
 });
 
-
-
-Route::get('/department', function () {
-    return view('HR.department');
+Route::get('/atten', function () {
+    return view('HR.attendenceform');
 });
+
+
 
 // department
 Route::post('/saveDepData',[App\Http\Controllers\departmentController::class, 'save']);
+Route::get('/department',[App\Http\Controllers\departmentController::class,'pageOpen']);
 
 //jbroles
 Route::post('/jbrolesave',[App\Http\Controllers\jbRoleController::class,'save']);

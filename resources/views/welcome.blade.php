@@ -13,15 +13,8 @@
     <link rel="stylesheet" href="css/card.css">
 </head>
 <body>
-    <div class="container mt-4">
-        <div class="row justify-content-center">
-            <div class="card">
-                <div class="col-md-12 text-center">
-                    <img src="/SystemIMG/lakLogo.jpg" width="100%;" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('include.logo')
+
 
     <div class="container-fluid mt-5 font-weight-bold text-uppercase">
         <div class="row justify-content-center">
@@ -69,7 +62,7 @@
                 
             </div>
             <div class="col-md-2">
-                <a href="">
+                <a href="/atten">
                     <div class="card text-center ">
                         <div class="card-header l-bg-orange-dark">
                             <p class=" mt-2">Attendance</p>

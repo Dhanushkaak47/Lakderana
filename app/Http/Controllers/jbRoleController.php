@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\jobRole;
 use App\Models\department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class jbRoleController extends Controller
 {
@@ -28,6 +29,12 @@ class jbRoleController extends Controller
     {
         # code...
         $departmentData = department::all();
-        return view('HR.jbrole', compact('departmentData'));
+        
+        $rolesdata=DB::table('job_roles')
+        ->select('job_roles.*','departments.departmentName')
+        ->join('departments','departments.id','=','job_roles.depID')
+        ->get();
+
+        return view('HR.jbrole', compact('departmentData','rolesdata'));
     }
 }

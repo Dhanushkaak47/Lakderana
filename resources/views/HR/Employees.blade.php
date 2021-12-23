@@ -13,15 +13,8 @@
     <link rel="stylesheet" href="css/card.css">
 </head>
 <body>
-    <div class="container mt-4">
-        <div class="row justify-content-center">
-            <div class="card">
-                <div class="col-md-12 text-center">
-                    <img src="/SystemIMG/lakLogo.jpg" width="100%;" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('include.logo')
+
     @include('include.HRnavbar')
 
     <div class="container mt-5">
