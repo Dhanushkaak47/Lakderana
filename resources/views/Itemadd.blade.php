@@ -61,51 +61,9 @@
                                 </div>
                                 </div>
                                 <div class="col-2 mt-3">
-                                <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
-                                    Add New Supplier
-                                    </button>
+                               
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content bg-dark">
-      <div class="modal-header text-light">
-        <h3 class="modal-title" id="exampleModalLabel">Add New Supplier</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <div class="form-group font-weight-bold text-warning">
-                    <label for="name">First Name</label>
-                    <input type="text" name="firstname" value="" class="form-control" id="name" aria-describedby="name" placeholder="First Name">
-                </div>
-                <div class="form-group font-weight-bold text-warning">
-                    <label for="name">Last Name</label>
-                    <input type="text" name="lastname" value="" class="form-control" id="name" aria-describedby="name" placeholder="Last Name">
-                </div>
-                <div class="form-group font-weight-bold text-warning">
-                    <label for="name">Date</label>
-                    <input type="Date" name="date" value="" class="form-control" id="name" aria-describedby="name" placeholder="Date">
-                </div>
-                <div class="form-group font-weight-bold text-warning">
-                    <label for="exampleInputEmail1">Company Name</label>
-                    <input type="text" name="company" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Company Name">
-                </div>
-                <div class="form-group font-weight-bold text-warning">
-                    <label for="exampleInputEmail1">Category Name</label>
-                    <input type="text" name="catname" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Category Name">
-                </div>
-               
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
                                 </div>
                                 <div class="container">
                                     <div class="row">
