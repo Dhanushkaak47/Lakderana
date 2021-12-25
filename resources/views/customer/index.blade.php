@@ -110,7 +110,8 @@ $('#SubmitForm').on('submit',function(e){
                                     + '</td><td>'
                                     + resp['success']['first_name']
                                     + '</td><td>'
-                                    + resp['success']['last_name ']
+
+                                    + resp['success']['last_name']
                                     + '</td><td>'
                                     + resp['success']['mobile']
                                     + '</td><td>'
