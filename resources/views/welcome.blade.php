@@ -26,7 +26,7 @@
     <div class="container-fluid mt-5 font-weight-bold text-uppercase">
         <div class="row justify-content-center">
             <div class="col-md-3">
-                <a href="">
+                <a href="customer">
                     <div class="card text-center">
                         <div class="card-header l-bg-orange-dark">
                             <h3 class=" mt-2">Customer Details</h3>
