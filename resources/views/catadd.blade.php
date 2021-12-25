@@ -39,7 +39,7 @@
                     <input type="text" name="catname" value="" class="form-control" id="name" aria-describedby="name" placeholder="Category Name">
                 </div>
                 <div class="form-group font-weight-bold text-warning">
-                    <label for="exampleInputEmail1">Category Type</label>
+                    <label for="exampleInputEmail1">Description</label>
                     <input type="text" name="cattype" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Category Type">
                 </div>
                

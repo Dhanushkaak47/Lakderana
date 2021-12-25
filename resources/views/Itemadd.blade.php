@@ -40,7 +40,7 @@
                     <form >
                         <div class="container">
                             <div class="row">
-                                <div class="col-4 mt-3">
+                                <div class="col-6 mt-3">
                                     <div class="input-group form-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -49,17 +49,7 @@
                                     
                                     </div>
                                 </div>
-                                <div class="col-4 mt-3">
-                                    <div class="input-group form-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                    </div>
-                                <select name="city" id="" class= "form-control" required>
-                                    <option value="Customer">Suplier Name</option>
-                                    <option value="Customer"><b>Kamal</b></option>
-                                 </select>
-                                </div>
-                                </div>
+                                
                                 <div class="col-2 mt-3">
                                
 
@@ -86,11 +76,8 @@
                                     
                                     </div>
                                 </div>
-                                    </div>
-                                </div>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-4 mt-3">
+
+                                <div class="col-4 mt-3">
                                             <div class="input-group form-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-address-card" aria-hidden="true"></i></span>
@@ -98,6 +85,11 @@
                                             <input type="text" name="resadd1" class="form-control" placeholder="Total Price" required>
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <div class="row">
+                                        
                                         <div class="col-4 mt-3">
                                         <div class="input-group form-group">
                                             <div class="input-group-prepend">
@@ -109,7 +101,18 @@
                                     </div>
                                     
                                 </div>
-                                        
+                                <div class="container">
+                                    <div class="row">
+                                    <div class="col-4 mt-3">
+                                        <div class="input-group form-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-address-card" aria-hidden="true"></i></span>
+                                            </div>
+                                            <input type="text" name="resadd2" class="form-control" placeholder="Sell Price" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>      
                                         
                                 <div class="form-group mt-3 ml-2">
                                     <input type="submit" value="ADD" class="btn float-right login_btn">

@@ -10,7 +10,7 @@
           <ul class="navbar-nav">
            
             <li class="nav-item">
-              <a class="nav-link " href="/ItemAdd">Item Add</a>
+              <a class="nav-link " href="/"data-toggle="modal" data-target="#order">Item Add</a>
             </li>
             <li class="nav-item">
               <a class="nav-link " href="/">Supplier Manage</a>
@@ -25,10 +25,7 @@
               <a class="nav-link " href="/">Reports</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="/">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " href="/" data-toggle="modal" data-target="#supplier">About Us</a>
+              <a class="nav-link " href="/" data-toggle="modal" data-target="#supplier">New supplier</a>
             </li>
            
            </title>
@@ -68,6 +65,40 @@
                     <label for="exampleInputEmail1">Category Name</label>
                     <input type="text" name="catname" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Category Name">
                 </div>
+               
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+                                </div>   
+  <!-- Modal -->
+<div class="modal fade" id="order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header text-light">
+        <h3 class="modal-title" id="exampleModalLabel">Add New Supplier</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group font-weight-bold text-warning">
+                    <label for="name">Order ID</label>
+                    <input type="text" name="orderid" value="" class="form-control" id="name" aria-describedby="name" placeholder="First Name">
+                </div>
+                <div class="form-group font-weight-bold text-warning">
+                    <label for="name">Supplier Name</label>
+                    <input type="text" name="supname" value="" class="form-control" id="name" aria-describedby="name" placeholder="Last Name">
+                </div>
+                <div class="form-group font-weight-bold text-warning">
+                    <label for="name">Order Date</label>
+                    <input type="Date" name="orderdate" value="" class="form-control" id="name" aria-describedby="name" placeholder="Last Name">
+                </div>
+               
                
       </div>
       <div class="modal-footer">
