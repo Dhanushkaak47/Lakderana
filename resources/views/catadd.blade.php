@@ -29,8 +29,20 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form action="/Catadd" method="post">
+      @csrf
+            @foreach($errors->all() as $error)
+               <div class="alert alert-danger" role="alert">
+                  {{$error}}
+               </div>
+            @endforeach
+            @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+    @endif
       <div class="modal-body">
-      <div class="form-group font-weight-bold text-warning">
+                <div class="form-group font-weight-bold text-warning">
                     <label for="name">Category ID</label>
                     <input type="text" name="catid" value="" class="form-control" id="id" aria-describedby="name" placeholder="Category ID">
                 </div>
@@ -40,15 +52,16 @@
                 </div>
                 <div class="form-group font-weight-bold text-warning">
                     <label for="exampleInputEmail1">Description</label>
-                    <input type="text" name="cattype" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Category Type">
+                    <input type="text" name="description" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Category Type">
                 </div>
                
       </div>
      
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Save changes</button>
+        <button type="submit" class="btn btn-success">Save changes</button>
       </div>
+      </form>
     </div>
   </div>
 </div>

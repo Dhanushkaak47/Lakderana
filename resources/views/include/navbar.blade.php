@@ -44,6 +44,18 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form action="/Addsuppliers" method="post">
+      @csrf
+            @foreach($errors->all() as $error)
+               <div class="alert alert-danger" role="alert">
+                  {{$error}}
+               </div>
+            @endforeach
+            @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+    @endif
       <div class="modal-body">
       <div class="form-group font-weight-bold text-warning">
                     <label for="name">First Name</label>
@@ -54,27 +66,30 @@
                     <input type="text" name="lastname" value="" class="form-control" id="name" aria-describedby="name" placeholder="Last Name">
                 </div>
                 <div class="form-group font-weight-bold text-warning">
-                    <label for="name">Date</label>
-                    <input type="Date" name="date" value="" class="form-control" id="name" aria-describedby="name" placeholder="Date">
+                    <label for="name">Contact No</label>
+                    <input type="text" name="contactno" value="" class="form-control" id="name" aria-describedby="name" placeholder="Contact No">
                 </div>
+                <div class="form-group font-weight-bold text-warning">
+                    <label for="name">Email</label>
+                    <input type="text" name="email" value="" class="form-control" id="name" aria-describedby="name" placeholder="Email">
+                </div>
+
                 <div class="form-group font-weight-bold text-warning">
                     <label for="exampleInputEmail1">Company Name</label>
                     <input type="text" name="company" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Company Name">
                 </div>
-                <div class="form-group font-weight-bold text-warning">
-                    <label for="exampleInputEmail1">Category Name</label>
-                    <input type="text" name="catname" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Category Name">
-                </div>
+                
                
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Save changes</button>
+        <button type="submit" class="btn btn-success">Save changes</button>
       </div>
     </div>
   </div>
 </div>
                                 </div>   
+      </form>
   <!-- Modal -->
 <div class="modal fade" id="order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -85,15 +100,24 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form action="/addorder" method="post">
+        @csrf
       <div class="modal-body">
-      <div class="form-group font-weight-bold text-warning">
+                <div class="form-group font-weight-bold text-warning">
                     <label for="name">Order ID</label>
                     <input type="text" name="orderid" value="" class="form-control" id="name" aria-describedby="name" placeholder="First Name">
                 </div>
+                
                 <div class="form-group font-weight-bold text-warning">
                     <label for="name">Supplier Name</label>
-                    <input type="text" name="supname" value="" class="form-control" id="name" aria-describedby="name" placeholder="Last Name">
+                    <select name="supname" class="form-control">
+                      <option value="">select</option>
+                      @foreach($data as $datas)
+                      <option value="{{$datas->id}}">{{$datas->firstname}}</option>
+                      @endforeach
+                    </select>
                 </div>
+                
                 <div class="form-group font-weight-bold text-warning">
                     <label for="name">Order Date</label>
                     <input type="Date" name="orderdate" value="" class="form-control" id="name" aria-describedby="name" placeholder="Last Name">
@@ -103,8 +127,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Save changes</button>
+        <button type="submit" class="btn btn-success">Save changes</button>
       </div>
+      </form>
     </div>
   </div>
 </div>

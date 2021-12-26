@@ -24,3 +24,9 @@ Route::get('/ItemAdd', function () {
 Route::get('/CatAdd', function () {
     return view('catadd');
 });
+
+Route::post('/Addsuppliers', [App\Http\Controllers\AddSupplier::class, 'addsup']);
+
+Route::post('/Catadd', [App\Http\Controllers\CatAddController::class, 'addcat']);
+
+Route::post('/addorder', [App\Http\Controllers\Ordercontroller::class, 'addorder']);
