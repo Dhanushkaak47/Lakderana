@@ -18,6 +18,42 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// HR Section
+Route::get('/HRsection', function () {
+    return view('HR.HRdashboard');
+});
+
+Route::get('/atten', function () {
+    return view('HR.attendenceform');
+});
+
+
+
+// department
+Route::post('/saveDepData',[App\Http\Controllers\departmentController::class, 'save']);
+Route::get('/department',[App\Http\Controllers\departmentController::class,'pageOpen']);
+
+//jbroles
+Route::post('/jbrolesave',[App\Http\Controllers\jbRoleController::class,'save']);
+Route::get('/jbroles',[App\Http\Controllers\jbRoleController::class,'pageOpen']);
+
+//employees
+Route::get('/employees',[App\Http\Controllers\employeeController::class,'pageopen']);
+Route::post('/empSave',[App\Http\Controllers\employeeController::class,'empsave']);
+
+//attendence record
+Route::post('/saveAttendence',[App\Http\Controllers\attendenceController::class,'saveattendence']);
+Route::get('/empattendence',[App\Http\Controllers\attendenceController::class,'pageopen']);
+
+Route::get('/getRole/getPro/{id}',[App\Http\Controllers\employeeController::class, 'getRole']);
+
+//emp salary 
+Route::get('/empsalary',[App\Http\Controllers\salaryController::class,'pageopen']);
+Route::get('/makesalary/{id}/{hours}',[App\Http\Controllers\salaryController::class,'makeSalary']);
+
+
+// end HR section
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
