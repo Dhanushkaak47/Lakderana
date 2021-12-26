@@ -30,9 +30,9 @@
                 <div class="card">
                    <div class="row">
                        <div class="col-md-6  text-center">
-                        <i class="fa fa-clock-o fa-5x mt-2 mb-2 ml-2 mr-2"></i>
+                        <i class="fa fa-clock-o fa-5x mt-2 mb-2 ml-2 mr-2 text-warning"></i>
 
-                            <h4 class="text-center font-weight-bold mt-2">Mark Attendance <i class="fa fa-check text-primary" aria-hidden="true"></i></h4>
+                            <h4 class="text-center font-weight-bold mt-2">Mark Attendance <i class="fa fa-check text-primary" aria-hidden="true"></i></h4> <hr>
                             
                             <div class="card mt-3" style="background-color:#D2FFFB;">
                                 <div class="row justify-content-center">
@@ -49,8 +49,11 @@
 
                             <div class="row justify-content-center">
                                 <div class="col-md-10">
-                                    <input type="text" name="empID" id="empID" class="form-control text-center mt-4" placeholder="Employee ID">
-                                    <input type="submit" value="Confirm" class="btn btn-primary mt-3">
+                                    <form action="/saveAttendence" method="post">
+                                        @csrf
+                                        <input type="text" name="empID" id="empID" class="form-control text-center mt-4" placeholder="Employee ID" required>
+                                        <input type="submit" value="Confirm" class="btn btn-primary mt-3">
+                                    </form>
                                 </div>
                             </div>
                        </div>

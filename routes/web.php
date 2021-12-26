@@ -41,8 +41,16 @@ Route::get('/jbroles',[App\Http\Controllers\jbRoleController::class,'pageOpen'])
 Route::get('/employees',[App\Http\Controllers\employeeController::class,'pageopen']);
 Route::post('/empSave',[App\Http\Controllers\employeeController::class,'empsave']);
 
+//attendence record
+Route::post('/saveAttendence',[App\Http\Controllers\attendenceController::class,'saveattendence']);
+Route::get('/empattendence',[App\Http\Controllers\attendenceController::class,'pageopen']);
 
 Route::get('/getRole/getPro/{id}',[App\Http\Controllers\employeeController::class, 'getRole']);
+
+//emp salary 
+Route::get('/empsalary',[App\Http\Controllers\salaryController::class,'pageopen']);
+Route::get('/makesalary/{id}/{hours}',[App\Http\Controllers\salaryController::class,'makeSalary']);
+
 
 // end HR section
 
