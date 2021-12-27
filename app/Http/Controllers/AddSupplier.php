@@ -8,6 +8,7 @@ use App\Models\Supplier;
 class AddSupplier extends Controller
 {
     public function addsup(Request $request){
+        //dd($request);
         $addsupplier=new Supplier;
         // validation
         $this->validate($request,[

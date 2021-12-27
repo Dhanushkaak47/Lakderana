@@ -37,7 +37,8 @@
                         <h3> Liquor Item Add</h3>
                     </div>
                     <div class="card-body">
-                    <form >
+                    <form action="/itemsave" method="post">
+                        @csrf
                         <div class="container">
                             <div class="row">
                                 <div class="col-6 mt-3">
@@ -45,11 +46,12 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                                     </div>
-                                    <input type="text" name="username" class="form-control" placeholder="Item Name" required>
+                                    <input type="text" name="itemname" class="form-control" placeholder="Item Name" required>
                                     
                                     </div>
                                 </div>
                                 <h1>{{$orderid}}</h1>
+                                <input type="hidden" name="orderid" value="{{$orderid}}">
                                 <div class="col-2 mt-3">
                                
 
@@ -62,7 +64,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                                     </div>
-                                    <input type="text" name="username" class="form-control" placeholder="Cost Price" required>
+                                    <input type="text" name="costprice" id="costprice" class="form-control" placeholder="Cost Price" required>
                                     
                                     </div>
                                 </div>
@@ -72,7 +74,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-phone-square" aria-hidden="true"></i></span>
                                     </div>
-                                    <input type="text" name="lastname" class="form-control" placeholder="Quantity" required>
+                                    <input type="text" name="qty" id="qty" class="form-control" placeholder="Quantity" required onchange="getTot()">
                                     
                                     </div>
                                 </div>
@@ -82,7 +84,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-address-card" aria-hidden="true"></i></span>
                                             </div>
-                                            <input type="text" name="resadd1" class="form-control" placeholder="Total Price" required>
+                                            <input type="text" name="total" class="form-control" placeholder="Total Price"id="demo" required>
                                             </div>
                                         </div>
                                     </div>
@@ -95,7 +97,20 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-address-card" aria-hidden="true"></i></span>
                                             </div>
-                                            <input type="text" name="resadd2" class="form-control" placeholder="Sell Price" required>
+                                            <input type="text" name="sellprice" class="form-control" placeholder="Sell Price" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 mt-3">
+                                        <div class="input-group form-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-address-card" aria-hidden="true"></i></span>
+                                            </div>
+                                            <select name="category" id="category" class="form-control">
+                                                <option value="">Select type</option>
+                                                @foreach($data as $datas)
+                                                <option value="{{$datas->id}}">{{$datas->catname}}</option>
+                                                @endforeach
+                                            </select>
                                             </div>
                                         </div>
                                     </div>
@@ -108,7 +123,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-address-card" aria-hidden="true"></i></span>
                                             </div>
-                                            <input type="text" name="resadd2" class="form-control" placeholder="Sell Price" required>
+                                            <textarea name="description" class="form-control" placeholder="Sell Price" required  rows="4"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -127,6 +142,24 @@
         </div>
 	</div>
 </div>
+
+    <script>
+
+    getTot = function() {
+
+    let text1 = document.getElementById("costprice").value
+
+    let text2 = document.getElementById("qty").value
+
+    let result = text1 * text2;
+
+    
+
+    document.getElementById("demo").value = result;
+
+    }
+
+    </script>
 </body>
 </html>
 

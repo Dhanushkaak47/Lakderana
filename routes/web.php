@@ -21,6 +21,8 @@ Route::get('/ItemAdd', function () {
     return view('Itemadd');
 });
 
+Route::post('/itemsave', [App\Http\Controllers\itemController::class, 'saveitem']);
+
 Route::get('/CatAdd', function () {
     return view('catadd');
 });

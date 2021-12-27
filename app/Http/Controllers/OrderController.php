@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\order;
+use App\Models\Category;
 
 
 class OrderController extends Controller
@@ -22,7 +23,12 @@ class OrderController extends Controller
         $addorder->supid = $request->supname;
         $addorder->save();
         $orderid=order::select('id')->orderBy('created_at','DESC')->first()->id;
-        return view('itemadd', compact('orderid'));
+
+        $data=Category::all();
+
+        //dd($data);
+
+        return view('itemadd', compact('orderid','data'));
 
     
 }
