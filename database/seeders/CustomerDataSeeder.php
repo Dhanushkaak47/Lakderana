@@ -19,11 +19,9 @@ class CustomerDataSeeder extends Seeder
             'cus_id' => 'CS001',
             'email' => 'doejohn@gmail.com',
             'mobile' => '1234567890',
-            'first_name' => 'Shan',
-            'last_name' => 'Perera',
-            
-
-        ]);
+            'cus_full_name'=>'Shan Perera',  
+        ]
+    );
         
     }
 }

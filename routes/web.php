@@ -59,6 +59,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/customer', [App\Http\Controllers\CustomerDataController::class, 'index'])->name('customer');
 Route::post('/customer', [App\Http\Controllers\CustomerDataController::class, 'search'])->name('customer');
-
+Route::post('/customer_registration', [App\Http\Controllers\CustomerDataController::class, 'register'])->name('customer_registration');
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
