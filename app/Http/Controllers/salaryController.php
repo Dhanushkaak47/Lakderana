@@ -42,6 +42,8 @@ class salaryController extends Controller
     public function makeSalary($id, $hours)
     {
         
+        $now = Carbon::now()->subMonths();
+        $month = $now->month;
         # code...
         //$hour = Carbon::createFromFormat($hours)->format('H');
         $time = $hours;
@@ -53,6 +55,12 @@ class salaryController extends Controller
         ->join('hotel_chains','hotel_chains.id','=','employees.workingPlace')
         ->where('employees.id',$id)
         ->get();
+
+        //shoud be empliment
+        $weekend=DB::SELECT("SELECT SUM(HOUR(in_time)) AS sumofin, SUM(HOUR(out_time)) AS sumofout from empattendences WHERE MONTH(attendenceDate)=$month AND empID=$id AND WEEKDAY(attendenceDate)=5 ");
+
+        //dd($weekend);
+        //this border
 
         //dd($employees);
         $empSal=DB::table('employees')->select('basic_salary')->where('id',$id)->first();
@@ -67,7 +75,7 @@ class salaryController extends Controller
         $currmonth=Carbon::now();
         $lastMonth =  $currmonth->subMonth()->format('Y M');
 
-        return view('HR.employeeSal', compact('employees','time','lastMonth'));
+        return view('HR.employeeSal', compact('employees','time','lastMonth','weekend'));
 
         
     }

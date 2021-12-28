@@ -51,29 +51,40 @@
 
                        
                         
-                        <div class="col-md-3 mt-4">
+                        <div class="col-md-2 mt-4">
                             <label class="ml-2 font-weight-bold"for="">Basic salary</label>
                             <input type="number" name="basic" id="basic" class="form-control ml-2 text-center" value="{{$employees->basic_salary}}">
                         </div>
                         
 
-                        <div class="col-md-3 mt-4">
+                        <div class="col-md-2 mt-4">
                             <label class="ml-2 font-weight-bold"for="">Travel allowence</label>
                             <input type="number" name="basic" id="basic" class="form-control ml-2 text-center" value="{{$employees->travel_allow}}">
                         </div>
 
-                        <div class="col-md-3 mt-4">
+                        <div class="col-md-2 mt-4">
+                            @foreach($weekend as $weekdays)
                             @if($time>180)
                             <label class="ml-2 font-weight-bold"for="">Over Time</label>
-                            <input type="text" name="basic" id="basic" class="form-control ml-2" value="{{($employees->basic_salary/180)* 1.5 *($time-180)}}">
+                            <input type="text" name="basic" id="basic" class="form-control ml-2 text-center" value="{{($employees->basic_salary/180)* 1.5 *($time-180)}}">
                             @else
                             <label class="ml-2 font-weight-bold"for="">Over Time</label>
                             <input type="text" name="basic" id="basic" class="form-control ml-2 text-center" value="0">
                             @endif
+                            @endforeach
                         </div>
 
                         <div class="col-md-2 mt-4">
-                            <label class="ml-2 font-weight-bold"for="">Bonus</label>
+                            @foreach($weekend as $weekdays)
+                            
+                            <label class="ml-2 font-weight-bold"for="">Weekend bonus</label>
+                            <input type="text" name="weekendbonos" id="weekendbonos" class="form-control ml-2 text-center" value="{{round(($employees->basic_salary/180)*0.5*($weekdays->sumofout-$weekdays->sumofin),2)}}">
+                            
+                            @endforeach
+                        </div>
+
+                        <div class="col-md-2 mt-4">
+                            <label class="ml-2 font-weight-bold"for="">Other Bonus</label>
                             <input type="text" name="basic" id="basic" class="form-control ml-2 text-center">
                         </div>
 
@@ -81,17 +92,17 @@
 
                     <div class="row mb-3">
                         @if($time<=180)
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <label class="ml-2 font-weight-bold" for="">No pay leave</label>
                             <input type="text" name="noPayLeave" class="form-control ml-2 text-center" id="noPayLeave" value="{{round($employees->basic_salary-(($employees->basic_salary/180) * $time),2)}}">
                         </div>
                         @else
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <label class="ml-2 font-weight-bold" for="">No pay leave</label>
                             <input type="text" name="noPayLeave" class="form-control ml-2 text-center" id="noPayLeave" value="0">
                         </div>
                         @endif
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <label class="ml-2 font-weight-bold" for="">EPF</label>
                             <input type="text" name="noPayLeave" class="form-control ml-2 text-center" id="noPayLeave" value="{{round($employees->basic_salary * (3/100))}}">
                         </div>
