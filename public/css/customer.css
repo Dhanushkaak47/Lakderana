@@ -1,22 +1,25 @@
 .search {
     border: 1px solid #c4c4c4;
-    width: 525px;
+    width: 1121px;
     overflow-x: hidden;
     display: flex;
     border-radius: 50px;
     font-size: 18px;
     position: relative;
+    padding-top: 17px;
+    padding-left: 4%;
 }
 .search input {
     width: 300px;
     height: 65px;
-    border: none;
+    border: dotted;
     padding: 8px 20px;
     outline: none;
-    font-size: 18px;
+    font-size: 12px;
 }
 .button-src {
-    padding: 10px 110px;
+    padding: -1px 110px !important;
+
     display: inline-block;
 }
 .button-src button {
