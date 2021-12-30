@@ -19,6 +19,9 @@ class CreateCustomerDataTable extends Migration
             $table->string('cus_full_name');
             $table->integer('mobile')->nullable()->unique();
             $table->string('email')->nullable()->unique();
+            $table->string('gender')->nullable();
+            $table->string('address')->nullable();
+            $table->string('nic')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
