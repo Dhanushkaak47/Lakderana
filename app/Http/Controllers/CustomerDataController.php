@@ -75,6 +75,10 @@ class CustomerDataController extends Controller
             $customer_name = $request->input('customer_name');
             $mobile = $request->input('mobile');          
             $email = $request->input('email');
+            $gender = $request->input('gender');
+            $address = $request->input('address');          
+            $nic = $request->input('nic');
+
             $user_id = random_int(1000, 9999);
             $new_user_id= "CS". $user_id ;
 
@@ -82,6 +86,9 @@ class CustomerDataController extends Controller
             $user->cus_id =$new_user_id;
             $user->email = $email;
             $user->mobile = $mobile;
+            $user->gender =$gender;
+            $user->address = $address;
+            $user->nic = $nic;
             $user->cus_full_name = $customer_name;
             $user->save();
 

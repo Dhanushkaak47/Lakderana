@@ -91,6 +91,27 @@
     <input type="number" class="form-control" placeholder="Enter Mobile Number" name="phone" id="phone">
   </div>
   <div class="form-group">
+    <label for="pwd">Address:</label>
+    <input type="text" class="form-control" placeholder="Enter Address" name="address" id="address">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Gender:</label>
+    <div class="form-check">
+      <label class="form-check-label" for="radio1">
+        <input type="radio" class="form-check-input" id="optradio" name="optradio" value="male" checked>Male
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label" for="radio2">
+        <input type="radio" class="form-check-input" id="optradio" name="optradio" value="female">Female
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="pwd">NIC:</label>
+    <input type="text" class="form-control" placeholder="Enter NIC Number" name="nic" id="nic">
+  </div>
+  <div class="form-group">
     <label for="mail">Email address:</label>
     <input type="text" class="form-control" placeholder="Enter Email Address" name="reg_email" id="reg_email">
   </div>
@@ -105,13 +126,16 @@
         <div class="row justify-content-center">
             <div class="card"  style="width: 100%;">
                 <div class="col-md-12 text-center">
-                <table style="width: 100%;">
+                <table style="width: 100%;"  class="table table-dark table-hover">
                     <thead>
                         <tr>
                         <th>Customer ID</th>
                         <th>Customer  Name</th>
                         <th>Customer Mobile Number</th>
                         <th>Customer Email</th>
+                        <th>Customer Address</th>
+                        <th>Gender</th>
+                        <th>NIC</th>
                         <th>Created At</th>
                         </tr>
                     </thead>
@@ -136,7 +160,11 @@ $('#register_form').on('submit',function(e){
     let customer_name = $('#name').val();
     let mobile = $('#phone').val();
     let email = $('#reg_email').val();
-   
+    let gender = $('#optradio').val();
+    let address = $('#address').val();
+    let nic = $('#nic').val();
+    
+  
    if (customer_name=='') {
    
        Swal.fire({
@@ -164,7 +192,35 @@ $('#register_form').on('submit',function(e){
         footer: ''
         })
    }
-    if (customer_name && mobile && email) {  
+   if (nic=='') {
+   
+   Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Customer NIC Cannot be Empty',
+        footer: ''
+        })
+}
+if (address=='') {
+  
+   Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Customer Address Cannot be Empty',
+    footer: ''
+    })
+}
+if (gender=='') {
+ 
+   Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Gender Cannot be Empty',
+    footer: ''
+    })
+}
+
+    if (customer_name && mobile && email && gender && address && nic) {  
    
     $.ajax({
       url: "/customer_registration",
@@ -173,7 +229,10 @@ $('#register_form').on('submit',function(e){
         "_token": "{{ csrf_token() }}",
         customer_name:customer_name,
         mobile:mobile,
-        email:email
+        email:email,
+        gender:gender,
+        address:address,
+        nic:nic
       
       },
       success:function(resp){
@@ -245,7 +304,13 @@ $('#SubmitForm').on('submit',function(e){
                                     + '</td><td>'
                                     + resp['success']['email']
                                     + '</td><td>'
-                                    + resp['success']['created_at']
+                                    + resp['success']['address']
+                                    + '</td><td>'
+                                    + resp['success']['gender']
+                                    + '</td><td>'
+                                    + resp['success']['nic']
+                                    + '</td><td>'
+                                    +  Date(resp['success']['created_at'])
                                     + '</td></tr>';
                             
                         });

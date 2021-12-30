@@ -20,6 +20,9 @@ class CustomerDataSeeder extends Seeder
             'email' => 'doejohn@gmail.com',
             'mobile' => '1234567890',
             'cus_full_name'=>'Shan Perera',  
+            'gender' => 'male',
+            'address'=>'colombo', 
+            'nic'=>'454545354', 
         ]
     );
         
