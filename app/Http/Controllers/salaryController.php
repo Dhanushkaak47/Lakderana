@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\emp_salary;
 use Illuminate\Http\Request;
 use App\Models\empattendence;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+
 
 class salaryController extends Controller
 {
@@ -77,6 +79,36 @@ class salaryController extends Controller
 
         return view('HR.employeeSal', compact('employees','time','lastMonth','weekend'));
 
+        
+    }
+
+    public function salary_create(Request $request)
+    {
+        # code...
+        $salary_data = new emp_salary;
+
+        $empID=$request->emp_id;
+        $month=$request->period;
+
+        $data = emp_salary::where([['emp_id',$empID],['peiriod',$month]])->count();
+        if($data<1){
+            $salary_data->emp_id=$request->emp_id;
+            $salary_data->basic_salary=$request->basic;
+            $salary_data->travel_allowence=$request->travel;
+            $salary_data->over_time=$request->ot;
+            $salary_data->weekend_bonus=$request->weekendbonos;
+            $salary_data->other_bonus=$request->otherbonus;
+            $salary_data->nopay_leave=$request->noPayLeave;
+            $salary_data->epf=$request->epf;
+            $salary_data->peiriod=$request->period;
+            $salary_data->save();
+
+            return redirect()->back()->with('done', 'done');
+        }
+
+        else{
+            return redirect()->back()->with('processed', 'Already Processed');
+        }
         
     }
 }

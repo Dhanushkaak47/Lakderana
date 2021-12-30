@@ -15,7 +15,7 @@
 <body style="background: rgb(25,69,157);">
     @include('include.logo')
 
-    @include('include.HRnavbar')
+    @include('include.financialNavbar')
 
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -29,7 +29,7 @@
                         <div class="row align-items-center mb-2 d-flex">
                             <div class="col-8">
                                 <h2 class="d-flex align-items-center mb-0">
-                                    {{$empcount}}
+                                    
                                 </h2>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                         <div class="row align-items-center mb-2 d-flex">
                             <div class="col-12">
                                 <h2 class="d-flex align-items-center mb-0">
-                                    {{$attendencetoday}}
+                                    
                                 </h2>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                         <div class="row align-items-center mb-2 d-flex">
                             <div class="col-8">
                                 <h2 class="d-flex align-items-center mb-0">
-                                   {{$absent}}
+                                   
                                 </h2>
                             </div>
                         </div>
