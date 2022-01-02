@@ -18,9 +18,7 @@ Route::get('/', function () {
     return view('School');
 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 // HR Section
 
 Route::get('/atten', function () {
@@ -73,7 +71,7 @@ Route::get('/export-employee',[App\Http\Controllers\employeeController::class,'e
 
 //end financial Section
 
->>>>>>> 54449640ecf212c2dd77ae43130a276f78b0381c
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -82,7 +80,7 @@ Route::post('/customer', [App\Http\Controllers\CustomerDataController::class, 's
 Route::post('/customer_registration', [App\Http\Controllers\CustomerDataController::class, 'register'])->name('customer_registration');
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
+
 Route::get('/ItemAdd', function () {
     return view('Itemadd');
 });
@@ -98,4 +96,3 @@ Route::post('/Addsuppliers', [App\Http\Controllers\AddSupplier::class, 'addsup']
 Route::post('/Catadd', [App\Http\Controllers\CatAddController::class, 'addcat']);
 
 Route::post('/addorder', [App\Http\Controllers\Ordercontroller::class, 'addorder']);
->>>>>>> BAR
