@@ -44,45 +44,37 @@
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark">
-<a class="navbar-brand" href="/">Lak Derana</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+  <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
     <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="/adver">Advertisement</a>
-        </li>
-      @guest
-        @if (Route::has('login'))
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
-        @endif
 
-        @if (Route::has('register'))
-            <li class="nav-item dropdown nav-item active">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Sign up as
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/signup">Traveller</a>
-                <a class="dropdown-item" href="/hotel">Accommodation</a>
-                <a class="dropdown-item" href="/transportsignup">Transport service</a>
-              </div>
-            </li>
-        @endif
-        @else
-          <li class="nav-item active">
-            <a class="nav-link" href="/community">Community</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/cpack">Create Packages</a>
-          </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/profile">Profile</a>
-            </li>
-            <li class="nav-item dropdown active">
+        <li class="nav-item active">
+          <a class="nav-link" href="/HRsection">Dashboard</a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/department">Departments</a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/jbroles">Job roles</a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/employees">Employees</a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/empsalary">Salary Management</a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/empattendence">Attendance</a>
+        </li>
+
+        {{-- <li class="nav-item dropdown active">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }}
                 </a>
@@ -98,8 +90,7 @@
                         @csrf
                     </form>
                 </div>
-            </li>
-        @endguest
+        </li> --}}
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
