@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\baritem;
+use App\Models\barsale;
 use App\Models\employee;
 use App\Models\emp_salary;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\DB;
 
 
 class financialController extends Controller
@@ -54,5 +56,29 @@ class financialController extends Controller
 
         return view('financial.paysheet', compact('employeesdata','salaryData'));
 
+    }
+
+    public function barreport()
+    {
+        # code...
+
+            $outcomes = baritem::selectRaw('year(created_at) as year, monthname(created_at) as month, sum(total) as total_sale')
+            ->groupBy('year','month')
+            ->orderByRaw('min(created_at) asc')
+            ->get();
+
+            $income = barsale::selectRaw('year(created_at) as year, monthname(created_at) as month, sum(line_total) as total_sale')
+            ->groupBy('year','month')
+            ->orderByRaw('min(created_at) asc')
+            ->get();
+
+            $barsales=DB::table('barsales')
+            ->select('barsales.*','baritems.itemName')
+            ->join('baritems','baritems.id','=','barsales.item_id')
+            ->get();
+        
+            //dd($mostsold);
+
+        return view('financial.barincome', compact('outcomes','income','barsales'));
     }
 }

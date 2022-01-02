@@ -57,6 +57,10 @@
           <a class="nav-link" href="/finance_salary">Employees salary</a>
         </li>
 
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/finance-bar-report">Bar Incomes/outcomes</a>
+        </li>
        
 
         {{-- <li class="nav-item dropdown active">
