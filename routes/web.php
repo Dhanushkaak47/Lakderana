@@ -15,12 +15,30 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('School');
 });
 
+<<<<<<< HEAD
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+=======
+Route::get('/ItemAdd', function () {
+    return view('Itemadd');
+});
+
+Route::post('/itemsave', [App\Http\Controllers\itemController::class, 'saveitem']);
+
+Route::get('/CatAdd', function () {
+    return view('catadd');
+});
+
+Route::post('/Addsuppliers', [App\Http\Controllers\AddSupplier::class, 'addsup']);
+
+Route::post('/Catadd', [App\Http\Controllers\CatAddController::class, 'addcat']);
+
+Route::post('/addorder', [App\Http\Controllers\Ordercontroller::class, 'addorder']);
+>>>>>>> BAR
