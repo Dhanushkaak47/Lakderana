@@ -6,7 +6,10 @@ use App\Models\employee;
 use App\Models\department;
 use App\Models\hotelChain;
 use Illuminate\Http\Request;
+use App\Models\empattendence;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class employeeController extends Controller
 {
@@ -73,5 +76,34 @@ class employeeController extends Controller
         $empdata->save();
 
         return redirect()->back();
+    }
+
+    public function opendashboard()
+    {
+        # code...
+        $date = Carbon::today()->toDateString();
+
+        $empcount = Employee::all()->count();
+
+        $attendencetoday=empattendence::where('attendenceDate',$date)->count();
+
+        $absent=$empcount-$attendencetoday;
+
+        $dailyAVG=empattendence::groupBy('attendenceDate')->count();
+
+        //dd($dailyAVG);
+        
+        return view('HR.HRdashboard', compact('empcount','attendencetoday','absent'));
+    }
+
+    public function emp_report()
+    {
+        # code...
+        $employees = employee::all();
+
+        $pdf = PDF::loadView('HR.emp-report',compact('employees'))->setOptions(['defaultFont' => 'sans-serif']);
+
+        $date = Carbon::today()->toDateString();
+        return $pdf->download('EmployeesReport'.$date.'.pdf');
     }
 }

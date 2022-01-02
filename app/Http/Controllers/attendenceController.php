@@ -47,4 +47,16 @@ class attendenceController extends Controller
 
         return view('HR.attendenceManage', compact('attendence'));
     }
+
+    public function HRattendence(Request $request)
+    {
+        # code...
+        $attendData = new empattendence;
+        $attendData->empID=$request->empID;
+        $attendData->in_time=$request->intime;
+        $attendData->out_time=$request->outTime;
+        $attendData->attendenceDate=$request->date;
+        $attendData->save();
+        return redirect()->back();
+    }
 }

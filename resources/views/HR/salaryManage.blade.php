@@ -250,7 +250,7 @@
     </style>
     
 </head>
-<body>
+<body style="background: rgb(25,69,157);">
     @include('include.logo')
 
     @include('include.HRnavbar')
@@ -258,7 +258,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col">
-                <h3 class="text-center font-weight-bold text-uppercase">Lak Derana Employee Salary - {{$lastMonth}}</h3><hr>
+                <h3 class="text-center text-light font-weight-bold text-uppercase">Lak Derana Employee Salary - {{$lastMonth}}</h3><hr>
             </div>
         </div>
     </div>

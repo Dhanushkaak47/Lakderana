@@ -19,9 +19,6 @@ Route::get('/', function () {
 });
 
 // HR Section
-Route::get('/HRsection', function () {
-    return view('HR.HRdashboard');
-});
 
 Route::get('/atten', function () {
     return view('HR.attendenceform');
@@ -44,6 +41,7 @@ Route::post('/empSave',[App\Http\Controllers\employeeController::class,'empsave'
 //attendence record
 Route::post('/saveAttendence',[App\Http\Controllers\attendenceController::class,'saveattendence']);
 Route::get('/empattendence',[App\Http\Controllers\attendenceController::class,'pageopen']);
+Route::post('/empattendenceHR',[App\Http\Controllers\attendenceController::class,'HRattendence']);
 
 Route::get('/getRole/getPro/{id}',[App\Http\Controllers\employeeController::class, 'getRole']);
 
@@ -51,8 +49,26 @@ Route::get('/getRole/getPro/{id}',[App\Http\Controllers\employeeController::clas
 Route::get('/empsalary',[App\Http\Controllers\salaryController::class,'pageopen']);
 Route::get('/makesalary/{id}/{hours}',[App\Http\Controllers\salaryController::class,'makeSalary']);
 
+Route::post('/emp_salary_save',[App\Http\Controllers\salaryController::class,'salary_create']);
+
+//hr Dashboard
+
+Route::get('/HRsection',[App\Http\Controllers\employeeController::class,'opendashboard']);
+
 
 // end HR section
+
+// financial Section
+Route::get('/findashboard',[App\Http\Controllers\financialController::class,'opendashboard']);
+Route::get('/finance_salary',[App\Http\Controllers\financialController::class,'paysheet']);
+Route::get('paysheetview/{id}',[App\Http\Controllers\financialController::class,'paysheetview']);
+
+
+//emp reported
+
+Route::get('/export-employee',[App\Http\Controllers\employeeController::class,'emp_report']);
+
+//end financial Section
 
 Auth::routes();
 
