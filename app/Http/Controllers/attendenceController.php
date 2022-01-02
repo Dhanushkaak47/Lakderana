@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\empattendence;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class attendenceController extends Controller
 {
@@ -43,8 +45,15 @@ class attendenceController extends Controller
         # code...
         $date = Carbon::today()->toDateString();
 
-        $attendence=empattendence::where('attendenceDate',$date)->get();
-
+        //$attendence=empattendence::where('attendenceDate',$date)->get();
+       
+        $attendence=DB::table('empattendences')
+        ->select('empattendences.*','employees.First_name','employees.Last_name')
+        ->join('employees','employees.id','=','empattendences.empID')
+        ->where('empattendences.attendenceDate',$date)
+        ->get();
+        
+        
         return view('HR.attendenceManage', compact('attendence'));
     }
 
@@ -58,5 +67,36 @@ class attendenceController extends Controller
         $attendData->attendenceDate=$request->date;
         $attendData->save();
         return redirect()->back();
+    }
+
+    public function export()
+    {
+        # code...
+        $date = Carbon::today()->toDateString();
+        
+
+        //$attendence=empattendence::where('attendenceDate',$date)->get();
+       
+        $attendence=DB::table('empattendences')
+        ->select('empattendences.*','employees.First_name','employees.Last_name')
+        ->join('employees','employees.id','=','empattendences.empID')
+        ->where('empattendences.attendenceDate',$date)
+        ->get();
+        
+        $pdf = PDF::loadView('HR.attendence-report',compact('attendence','date'))->setOptions(['defaultFont' => 'sans-serif']);
+
+        return $pdf->download('Daily Attendence'.$date.'.pdf');
+
+        // Excel::create('New file', function($excel) {
+
+        //     $excel->sheet('New sheet', function($sheet) {
+        
+        //         $sheet->loadView('HR.attendence-report',compact('attendence','date'))->setOptions(['defaultFont' => 'sans-serif']);
+        //         return $sheet->download('Daily Attendence.pdf');
+        //     });
+        
+        // });
+
+        return view('HR.attendence-report', compact('attendence','date'));
     }
 }

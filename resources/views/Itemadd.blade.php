@@ -37,7 +37,7 @@
                         <h3> Liquor Item Add</h3>
                     </div>
                     <div class="card-body">
-                    <form action="/itemsave" method="post">
+                    <form action="/itemsave" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="container">
                             <div class="row">
@@ -89,6 +89,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-4 mt-3">
+                                    <div class="input-group form-group">
+                                            <input type="file" name="pictuename" class="form-control" required>
+                                    </div>
+                                </div>
                                 <div class="container">
                                     <div class="row">
                                         
@@ -132,6 +137,11 @@
                                 <div class="form-group mt-3 ml-2">
                                     <input type="submit" value="ADD" class="btn float-right login_btn">
                                 </div>
+
+                                <div class="form-group mt-3 ml-2">
+                                    <a href="/orderfinish/{{$orderid}}" class="btn float-right login_btn btn-success">Finish</a>
+                                </div>
+
                             </div>
                         </div>
                     </div>

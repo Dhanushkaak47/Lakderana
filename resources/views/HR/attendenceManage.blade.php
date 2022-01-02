@@ -33,11 +33,13 @@
             </button>
           </div>
             <div class="col-12">
+              <a href="/export-attendence" class="btn btn-success mt-2">Export</a>
                 {{-- <input type="button" value="New Department" class="btn btn-primary btn-block font-weight-bold" data-toggle="modal" data-target=".bd-example-modal-lg"> --}}
                 <table class="table">
                     <thead class="thead-dark">
                       <tr>
                         <th scope="col">Employee ID</th>
+                        <th scope="col">Employee name</th>
                         <th scope="col">In time</th>
                         <th scope="col">Leave time</th>
                         <th></th>
@@ -47,6 +49,7 @@
                       @foreach($attendence as $data)
                         <tr>
                             <td>{{$data->empID}}</td>
+                            <td>{{$data->First_name}} {{$data->Last_name}}</td>
                             <td>{{$data->in_time}}</td>
                             <td>{{$data->out_time}}</td>
                             <td><a href="#"><i class="fa fa-pencil-square text-warning" aria-hidden="true"></i></a></td>

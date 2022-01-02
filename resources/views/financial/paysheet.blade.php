@@ -87,6 +87,9 @@
                             <div class="col-md-6">
                                 <div> <span class="fw-bolder">Ac No.</span> <small class="ms-3">*******0701</small> </div>
                             </div>
+                            <div class="col-md-6">
+                                <div> <span class="fw-bolder">Joining date.</span> <small class="ms-3">{{$empdata->Hire_date}}</small> </div>
+                            </div>
                         </div>
                     </div>
                    

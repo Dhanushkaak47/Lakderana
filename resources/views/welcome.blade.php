@@ -49,7 +49,7 @@
                 
             </div>
             <div class="col-md-2">
-                <a href="">
+                <a href="/bardashboard">
                     <div class="card text-center">
                         <div class="card-header l-bg-orange-dark">
                             <p class=" mt-2">Liqor Bar</p>

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('School');
+    return view('welcome');
 });
 
 
@@ -43,6 +43,7 @@ Route::post('/empSave',[App\Http\Controllers\employeeController::class,'empsave'
 Route::post('/saveAttendence',[App\Http\Controllers\attendenceController::class,'saveattendence']);
 Route::get('/empattendence',[App\Http\Controllers\attendenceController::class,'pageopen']);
 Route::post('/empattendenceHR',[App\Http\Controllers\attendenceController::class,'HRattendence']);
+Route::get('/export-attendence',[App\Http\Controllers\attendenceController::class,'export']);
 
 Route::get('/getRole/getPro/{id}',[App\Http\Controllers\employeeController::class, 'getRole']);
 
@@ -55,6 +56,8 @@ Route::post('/emp_salary_save',[App\Http\Controllers\salaryController::class,'sa
 //hr Dashboard
 
 Route::get('/HRsection',[App\Http\Controllers\employeeController::class,'opendashboard']);
+
+
 
 
 // end HR section
@@ -96,3 +99,18 @@ Route::post('/Addsuppliers', [App\Http\Controllers\AddSupplier::class, 'addsup']
 Route::post('/Catadd', [App\Http\Controllers\CatAddController::class, 'addcat']);
 
 Route::post('/addorder', [App\Http\Controllers\Ordercontroller::class, 'addorder']);
+
+Route::get('/bardashboard', function () {
+    return view('barDashboard');
+});
+
+Route::get('/bardashboard',[App\Http\Controllers\bardashboardController::class,'dashboardopen']);
+
+Route::get('/barsale',[App\Http\Controllers\itemController::class,'barsalepage']);
+Route::get('/liqorview/{id}',[App\Http\Controllers\itemController::class,'liqview']);
+Route::post('/salesliq', [App\Http\Controllers\itemController::class, 'newsale']);
+
+//bar reports
+Route::get('/monthly-report',[App\Http\Controllers\bardashboardController::class,'monthlyreport']);
+Route::get('/most-sold',[App\Http\Controllers\bardashboardController::class,'mostsold']);
+Route::get('/barinventory',[App\Http\Controllers\bardashboardController::class,'inventory']);

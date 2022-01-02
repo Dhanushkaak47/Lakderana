@@ -16,10 +16,8 @@ class OrderController extends Controller
             
             'supname'=>'required|max:50',
             
-    
-            
-
         ]);
+
         $addorder->supid = $request->supname;
         $addorder->save();
         $orderid=order::select('id')->orderBy('created_at','DESC')->first()->id;
