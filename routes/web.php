@@ -61,8 +61,12 @@ Route::get('/HRsection',[App\Http\Controllers\employeeController::class,'opendas
 // financial Section
 Route::get('/findashboard',[App\Http\Controllers\financialController::class,'opendashboard']);
 Route::get('/finance_salary',[App\Http\Controllers\financialController::class,'paysheet']);
-Route::get('/paysheetview/{id}',[App\Http\Controllers\financialController::class,'paysheetview']);
+Route::get('paysheetview/{id}',[App\Http\Controllers\financialController::class,'paysheetview']);
 
+
+//emp reported
+
+Route::get('/export-employee',[App\Http\Controllers\employeeController::class,'emp_report']);
 
 //end financial Section
 

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\empattendence;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class employeeController extends Controller
 {
@@ -93,5 +94,16 @@ class employeeController extends Controller
         //dd($dailyAVG);
         
         return view('HR.HRdashboard', compact('empcount','attendencetoday','absent'));
+    }
+
+    public function emp_report()
+    {
+        # code...
+        $employees = employee::all();
+
+        $pdf = PDF::loadView('HR.emp-report',compact('employees'))->setOptions(['defaultFont' => 'sans-serif']);
+
+        $date = Carbon::today()->toDateString();
+        return $pdf->download('EmployeesReport'.$date.'.pdf');
     }
 }

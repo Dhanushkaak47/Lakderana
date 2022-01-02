@@ -21,6 +21,7 @@
         <div class="row">
             <div class="col">
                 <h3 class="text-center text-light font-weight-bold text-uppercase">Employees Management</h3><hr>
+                <a href="/export-employee" class="btn btn-success mt-2 mb-2">Export Data</a>
             </div>
         </div>
     </div>
@@ -82,6 +83,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Employee Details</h5>
+                  
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>

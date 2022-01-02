@@ -1,47 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lak Derana</title>
     <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
     <!-- bootstrap css cdn -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/card.css">
+    <style>
+        #customers {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+          margin-top: 25px;
+        }
+        
+        #customers td, #customers th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+        
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+        
+        #customers tr:hover {background-color: #ddd;}
+        
+        #customers th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #828584;
+          color: white;
+        }
+        
+        h3{
+            text-align: left;
+            text-transform: uppercase;
+            color: #0065b8;
+        }
+
+        p{
+            text-align: center;
+            text-transform: uppercase;
+            color: #000000;
+        }
+        
+    </style>
 </head>
-<body style="background: rgb(25,69,157);">
-    @include('include.logo')
-
-    @include('include.financialNavbar')
-
+<body style="">
     @foreach($employeesdata as $empdata)
     @foreach($salaryData as $saldata)
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col">
-                <h3 class="text-center text-light font-weight-bold text-uppercase">Employees Salaries - Pending</h3><hr>
-            </div>
-        </div>
-    </div>
-
     <div class="container mt-5 mb-5">
         <div class="row">
-            <div class="col-md-12">
-                <div class="row justify-content-end">
-                    <div class="col-md-3">
-                        <button class="btn btn-success btn-block font-weight-bold">Print paysheet <i class="fa fa-print text-light" aria-hidden="true"></i></button>
-                    </div>
-                </div>
-            </div>
             <div class="col-md-12 bg-light">
                 <div>
-                    <h3 class="font-weight-bold text-primary mt-2">Lak Derana Hotel Group</h3>
-                </div>
-                <div class="text-center lh-1 mb-2">
-                    <h6 class="fw-bold mt-3">Payslip</h6> <span class="fw-normal"></span>
+                    <h3 class="font-weight-bold text-primary mt-2"><b>Lak Derana Hotel Group</b></h3>
                 </div>
                 <div>
                     <p class="text-center font-weight-bold">Payment slip for the month of {{$saldata->peiriod}}</p>
@@ -77,7 +89,8 @@
                             </div>
                         </div>
                     </div>
-                    <table class="mt-4 table table-bordered">
+                   
+                    <table class="mt-4 table table-bordered" id="customers">
                         <thead class="bg-dark text-white">
                             <tr>
                                 <th scope="col">Earnings</th>
@@ -88,40 +101,40 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">Basic</th>
-                                <td class="text-right">{{$saldata->basic_salary}}.00</td>
+                                <td scope="row">Basic</td>
+                                <td class="text-right" style="text-align: right;">{{$saldata->basic_salary}}.00</td>
                                 <td>Extra Leave</td>
-                                <td class="text-right">{{$saldata->nopay_leave}}.00</td>
+                                <td class="text-right" style="text-align: right;">{{$saldata->nopay_leave}}.00</td>
                             </tr>
                             <tr>
-                                <th scope="row">Travel allowence</th>
-                                <td class="text-right">{{$saldata->travel_allowence}}.00</td>
+                                <td scope="row">Travel allowence</td>
+                                <td class="text-right" style="text-align: right;"  style="text-align: right;">{{$saldata->travel_allowence}}.00</td>
                                 <td>EPF</td>
-                                <td class="text-right">{{$saldata->epf}}.00</td>
+                                <td class="text-right"  style="text-align: right;">{{$saldata->epf}}.00</td>
                             </tr>
                             <tr>
-                                <th scope="row">Over time</th>
-                                <td class="text-right">{{$saldata->over_time}}.00 </td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Weekend bonus</th>
-                                <td class="text-right">{{$saldata->weekend_bonus}}.00 </td>
+                                <td scope="row">Over time</td>
+                                <td class="text-right"  style="text-align: right;">{{$saldata->over_time}}.00 </td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <th scope="row">Other bonus</th>
-                                <td class="text-right">{{$saldata->other_bonus}}.00 </td>
+                                <td scope="row">Weekend bonus</td>
+                                <td class="text-right"  style="text-align: right;">{{$saldata->weekend_bonus}}.00 </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Other bonus</td>
+                                <td class="text-right"  style="text-align: right;">{{$saldata->other_bonus}}.00 </td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr class="border-top">
-                                <th scope="row">Total Earning</th>
-                                <td class="text-right">{{$saldata->basic_salary+$saldata->travel_allowence+$saldata->over_time+$saldata->weekend_bonus+$saldata->other_bonus}}.00</td>
+                                <td scope="row">Total Earning</td>
+                                <td class="text-right"  style="text-align: right;">{{$saldata->basic_salary+$saldata->travel_allowence+$saldata->over_time+$saldata->weekend_bonus+$saldata->other_bonus}}.00</td>
                                 <td class="font-weight-bold">Total Deductions</td>
-                                <td class="text-right">{{$saldata->nopay_leave+$saldata->epf}}.00</td>
+                                <td class="text-right"  style="text-align: right;">{{$saldata->nopay_leave+$saldata->epf}}.00</td>
                             </tr>
                         </tbody>
                     </table>
@@ -129,10 +142,10 @@
                 <div class="row justify-content-end">
                     <div class="col-md-4 text-right"> <br> <span class="fw-bold font-weight-bold">Net Salary : {{($saldata->basic_salary+$saldata->travel_allowence+$saldata->over_time+$saldata->weekend_bonus+$saldata->other_bonus) - ($saldata->nopay_leave+$saldata->epf)}}.00</span> </div>
                 </div>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-end" style="margin-top:10px;">
                     <div class="d-flex flex-column"><span class="mt-4">Authorised Signatory</span> </div>
                 </div>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-end" style="margin-top:15px;" >
                     <div class="d-flex flex-column"><span class="mt-4">..........................................................</span> </div>
                 </div>
             </div>

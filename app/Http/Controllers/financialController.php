@@ -6,7 +6,8 @@ use App\Models\employee;
 use App\Models\emp_salary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class financialController extends Controller
 {
@@ -32,7 +33,6 @@ class financialController extends Controller
     public function paysheetview($id)
     {
         # code...
-        //$data = employee::where('emp_id',$id)->get();
         $employeesdata=DB::table('employees')
         ->select('employees.*','departments.departmentName','job_roles.rolename','hotel_chains.City')
         ->join('departments','departments.id','=','employees.departmentID')
@@ -44,13 +44,12 @@ class financialController extends Controller
 
         $salaryData = emp_salary::where([['emp_id',$id],['pay_status',0]])->get();
 
-        // $data = ['employeesdata' => $employeesdata,
-        //     'salaryData' => $salaryData
-        // ];
 
-        // $pdf = PDF::loadView('financial.paysheet', $data);
+        //$pdf = PDF::loadView('financial.paysheet', compact('employeesdata','salaryData'));
 
-        // return $pdf->download('invoice.pdf');
+        $pdf = PDF::loadView('financial.paysheet',compact('employeesdata','salaryData'))->setOptions(['defaultFont' => 'sans-serif']);
+
+        return $pdf->download('paysheet'.$id.'.pdf');
 
 
         return view('financial.paysheet', compact('employeesdata','salaryData'));

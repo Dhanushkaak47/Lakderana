@@ -23,6 +23,7 @@ class salaryController extends Controller
 
         $now = Carbon::now()->subMonths();
         $month = $now->month;
+        
 
         //dd($month);
 
