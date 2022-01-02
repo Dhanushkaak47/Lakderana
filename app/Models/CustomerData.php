@@ -10,8 +10,7 @@ class CustomerData extends Model
     use HasFactory;
     public $fillable = [
         'cus_id',
-        'first_name',
-        'last_name',
+        'cus_full_name',
         'mobile',
         'email',
         'status',
