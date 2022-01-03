@@ -75,7 +75,7 @@ class employeeController extends Controller
         $empdata->travel_allow=$request->travelAloow;
         $empdata->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('message','success');
     }
 
     public function opendashboard()

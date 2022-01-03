@@ -21,7 +21,7 @@ class departmentController extends Controller
         $data->contactNo=$request->contact;
         $data->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('message','success');
     }
 
     public function pageopen()

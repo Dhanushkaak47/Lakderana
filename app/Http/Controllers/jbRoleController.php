@@ -21,8 +21,7 @@ class jbRoleController extends Controller
         $data->rolename=$request->rolename;
         $data->depID=$request->department;
         $data->save();
-
-        return redirect()->back();
+        return redirect()->back()->with('message','success');
     }
 
     public function pageOpen()
