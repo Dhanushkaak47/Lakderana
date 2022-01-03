@@ -37,6 +37,39 @@
         </div>
     @endif
 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-sm table-dark mt-3">
+                    <thead>
+                      <tr>
+                        <th scope="col">#Room No</th>
+                        <th scope="col">Room Type</th>
+                        <th scope="col">Status</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($roomsdata as $data)
+                      <tr>
+                        <td>{{$data->roomNo}}</td>
+                        <td>{{$data->typename}}</td>
+                        @if ($data->status)
+                        <td class="bg-success text-center"><b>Available</b></td>
+                        @else
+                        <td class="bg-danger text-center"><b>Not available</b></td>
+                        @endif   
+                        <td><a href="#"><i class="fa fa-pencil-square text-warning" aria-hidden="true"></i></a></td>
+                        <td><a href="#"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
 
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">

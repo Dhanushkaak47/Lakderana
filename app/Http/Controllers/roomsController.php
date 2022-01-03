@@ -21,7 +21,14 @@ class roomsController extends Controller
     {
         # code...
         $room=roomtype::all();
-        return view('reservation.roomsmanage', compact('room'));
+        $hotelid = ((Auth::user()->hotelID));
+
+        $roomsdata=DB::table('rooms')
+        ->select('rooms.*','roomtypes.typename')
+        ->join('roomtypes','roomtypes.id','=','rooms.roomtype')
+        ->where('rooms.hotelID',$hotelid)
+        ->get();
+        return view('reservation.roomsmanage', compact('room','roomsdata'));
     }
 
     public function roomtypesave(Request $request)
@@ -54,6 +61,9 @@ class roomsController extends Controller
     {
         # code...
         $room=roomtype::all();
+
+        
+
         return view('reservation.reservation', compact('room'));
     }
 
