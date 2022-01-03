@@ -34,7 +34,7 @@
                 
             </div>
             <div class="col-md-2">
-                <a href="">
+                <a href="/rmdashboard">
                     <div class="card text-center">
                         <div class="card-header  l-bg-orange-dark">
                             <p class=" mt-2">Rooms Reservation</p>

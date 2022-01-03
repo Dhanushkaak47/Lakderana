@@ -79,4 +79,13 @@ class itemController extends Controller
         return redirect()->back()->with('message', 'Item Category added Successfully!');
 
     }
+
+    public function search(Request $request)
+    {
+        # code...
+        $name = $request->Search;
+        $baritem=baritem::where('itemName', 'like','%'.$name.'%')->get();
+        //->where([['add_rests.restaddress','like','%'. $request->location.'%'],['foodmanages.Itemname','like','%'.$request->item.'%'],['foodmanages.price','<=',$request->money]])
+        return view('barsale', compact('baritem'));
+    }
 }

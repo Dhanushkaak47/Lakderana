@@ -99,11 +99,24 @@ class employeeController extends Controller
     public function emp_report()
     {
         # code...
-        $employees = employee::all();
+        //$employees = employee::all();
+        $employees=DB::table('employees')
+        ->select('employees.*','departments.departmentName','job_roles.rolename','hotel_chains.City')
+        ->join('departments','departments.id','=','employees.departmentID')
+        ->join('job_roles','job_roles.id','=','employees.jobRoleID')
+        ->join('hotel_chains','hotel_chains.id','=','employees.workingPlace')
+        ->get();
 
         $pdf = PDF::loadView('HR.emp-report',compact('employees'))->setOptions(['defaultFont' => 'sans-serif']);
 
         $date = Carbon::today()->toDateString();
         return $pdf->download('EmployeesReport'.$date.'.pdf');
+    }
+
+    public function procard($id)
+    {
+        $employee = employee::where('id',$id);
+
+        return view('HR.emp_profile_card', compact('employee'));
     }
 }

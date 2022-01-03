@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -37,4 +38,23 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function authenticated(Request $request, $user){
+        if($user->user_Level == 1){
+            return redirect()->to('/rmdashboard');
+        }
+        elseif($user->user_Level == 3){
+            return redirect()->to('/HRsection');
+        }
+        elseif($user->user_Level == 3){
+            return redirect()->to('/transport-profile');
+        }
+        elseif($user->user_Level == 4){
+            return redirect()->to('/adminDashboard');
+        }
+        else{
+            return redirect()->to('/');
+        }
+    }
+
 }

@@ -43,6 +43,7 @@
                         <th scope="col">Working place</th>
                         <th></th>
                         <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -59,7 +60,7 @@
                             <td>{{$empdata->City}}</td>
                             <td><a href="#"><i class="fa fa-pencil-square text-warning" aria-hidden="true"></i></a></td>
                             <td><a href="#"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
-                            
+                            <td><a href="/empcard/{{$empdata->id}}"><i class="fa fa-print text-warning" aria-hidden="true"></i></a></td>
                         </tr>
                       @endforeach
                     </tbody>

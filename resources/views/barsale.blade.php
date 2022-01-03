@@ -29,11 +29,15 @@
                 <div class="row justify-content-center mb-5">
                     
                     <div class="col-md-8">
+                        <form action="/barserach" method="post">
+                            @csrf
                         <div class="input-group">
-                                <input type="search" class="form-control rounded" name="Search" placeholder="Search" aria-label="Search"
-                                aria-describedby="search-addon" />
-                            <button type="submit" class="btn btn-warning"><i class="fa fa-search"></i></button>
+                               
+                                    <input type="search" class="form-control rounded" name="Search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                    <button type="submit" class="btn btn-warning"><i class="fa fa-search"></i></button>
+                               
                         </div>
+                        </form>
                      </div>
                 </div>
             </div>

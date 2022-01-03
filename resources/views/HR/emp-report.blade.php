@@ -35,6 +35,8 @@
     <th>Address</th>
     <th>Contact</th>
     <th>Email</th>
+    <th>Designation</th>
+    <th>Department</th>
   </tr>
   @foreach($employees as $data)
   <tr>
@@ -43,6 +45,8 @@
     <td>{{$data->Address}}</td>
     <td>{{$data->contact}}</td>
     <td>{{$data->email}}</td>
+    <td>{{$data->rolename}}</td>
+    <td>{{$data->departmentName}}</td>
   </tr>
   @endforeach
 </table>

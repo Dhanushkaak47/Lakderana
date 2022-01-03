@@ -25,37 +25,40 @@ Route::get('/atten', function () {
     return view('HR.attendenceform');
 });
 
+Route::middleware(['auth','hr'])->group(function (){
+        // department
+    Route::post('/saveDepData',[App\Http\Controllers\departmentController::class, 'save']);
+    Route::get('/department',[App\Http\Controllers\departmentController::class,'pageOpen']);
+
+    //jbroles
+    Route::post('/jbrolesave',[App\Http\Controllers\jbRoleController::class,'save']);
+    Route::get('/jbroles',[App\Http\Controllers\jbRoleController::class,'pageOpen']);
+
+    //employees
+    Route::get('/employees',[App\Http\Controllers\employeeController::class,'pageopen']);
+    Route::post('/empSave',[App\Http\Controllers\employeeController::class,'empsave']);
+
+    //attendence record
+    Route::post('/saveAttendence',[App\Http\Controllers\attendenceController::class,'saveattendence']);
+    Route::get('/empattendence',[App\Http\Controllers\attendenceController::class,'pageopen']);
+    Route::post('/empattendenceHR',[App\Http\Controllers\attendenceController::class,'HRattendence']);
+    Route::get('/export-attendence',[App\Http\Controllers\attendenceController::class,'export']);
+
+    Route::get('/getRole/getPro/{id}',[App\Http\Controllers\employeeController::class, 'getRole']);
+
+    //emp salary 
+    Route::get('/empsalary',[App\Http\Controllers\salaryController::class,'pageopen']);
+    Route::get('/makesalary/{id}/{hours}',[App\Http\Controllers\salaryController::class,'makeSalary']);
+
+    Route::post('/emp_salary_save',[App\Http\Controllers\salaryController::class,'salary_create']);
+
+    //hr Dashboard
+
+    Route::get('/HRsection',[App\Http\Controllers\employeeController::class,'opendashboard']);
+
+});
 
 
-// department
-Route::post('/saveDepData',[App\Http\Controllers\departmentController::class, 'save']);
-Route::get('/department',[App\Http\Controllers\departmentController::class,'pageOpen']);
-
-//jbroles
-Route::post('/jbrolesave',[App\Http\Controllers\jbRoleController::class,'save']);
-Route::get('/jbroles',[App\Http\Controllers\jbRoleController::class,'pageOpen']);
-
-//employees
-Route::get('/employees',[App\Http\Controllers\employeeController::class,'pageopen']);
-Route::post('/empSave',[App\Http\Controllers\employeeController::class,'empsave']);
-
-//attendence record
-Route::post('/saveAttendence',[App\Http\Controllers\attendenceController::class,'saveattendence']);
-Route::get('/empattendence',[App\Http\Controllers\attendenceController::class,'pageopen']);
-Route::post('/empattendenceHR',[App\Http\Controllers\attendenceController::class,'HRattendence']);
-Route::get('/export-attendence',[App\Http\Controllers\attendenceController::class,'export']);
-
-Route::get('/getRole/getPro/{id}',[App\Http\Controllers\employeeController::class, 'getRole']);
-
-//emp salary 
-Route::get('/empsalary',[App\Http\Controllers\salaryController::class,'pageopen']);
-Route::get('/makesalary/{id}/{hours}',[App\Http\Controllers\salaryController::class,'makeSalary']);
-
-Route::post('/emp_salary_save',[App\Http\Controllers\salaryController::class,'salary_create']);
-
-//hr Dashboard
-
-Route::get('/HRsection',[App\Http\Controllers\employeeController::class,'opendashboard']);
 
 
 
@@ -72,6 +75,8 @@ Route::get('/finance-bar-report',[App\Http\Controllers\financialController::clas
 //emp reported
 
 Route::get('/export-employee',[App\Http\Controllers\employeeController::class,'emp_report']);
+Route::get('/empcard/{id}',[App\Http\Controllers\employeeController::class,'procard']);
+
 
 //end financial Section
 
@@ -115,3 +120,27 @@ Route::post('/salesliq', [App\Http\Controllers\itemController::class, 'newsale']
 Route::get('/monthly-report',[App\Http\Controllers\bardashboardController::class,'monthlyreport']);
 Route::get('/most-sold',[App\Http\Controllers\bardashboardController::class,'mostsold']);
 Route::get('/barinventory',[App\Http\Controllers\bardashboardController::class,'inventory']);
+Route::post('/barserach', [App\Http\Controllers\itemController::class, 'search']);
+
+Route::middleware(['auth','rm'])->group(function (){
+        //rooms reservation module
+    Route::get('/rmdashboard',[App\Http\Controllers\roomsController::class,'opendashboard']);
+    Route::get('/rooms_man',[App\Http\Controllers\roomsController::class,'openrooms']);
+    Route::post('/roomtypesave',[App\Http\Controllers\roomsController::class,'roomtypesave']);
+    Route::post('/saveRoomdata',[App\Http\Controllers\roomsController::class,'roomsave']);
+    Route::get('/roomres',[App\Http\Controllers\roomsController::class,'openres']);
+    Route::get('/getrooms/roomsno/{id}',[App\Http\Controllers\roomsController::class, 'getrooms']);
+    Route::post('/reservationsave',[App\Http\Controllers\roomsController::class,'roomreserve']);
+    
+});
+
+
+
+
+//admin controller
+Route::get('/admindash',[App\Http\Controllers\adminController::class,'opendashboard']);
+Route::get('/usermanage',[App\Http\Controllers\adminController::class,'usermanage']);
+Route::get('/getRole/emp/{id}',[App\Http\Controllers\adminController::class, 'getemp']);
+Route::post('/usersave',[App\Http\Controllers\adminController::class,'usersave']);
+
+
