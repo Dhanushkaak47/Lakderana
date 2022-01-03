@@ -80,10 +80,16 @@ class roomsController extends Controller
     {
         # code...
         $data = new reservation;
+        $number=$request->roomno;
         $data->roomtype=$request->roomtype;
         $data->roomNo=$request->roomno;
         $data->cus_id=$request->cusNo;
         $data->save();
+
+        $updateWinner = DB::table('rooms')->where('roomNo', $number)->update([
+            'status' => 0,
+            
+        ]);
 
         return redirect()->back()->with('message','success');
     }

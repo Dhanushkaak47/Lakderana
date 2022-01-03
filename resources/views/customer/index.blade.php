@@ -129,6 +129,7 @@
                 <table style="width: 100%;"  class="table table-dark table-hover">
                     <thead>
                         <tr>
+                        <th>#</th>
                         <th>Customer ID</th>
                         <th>Customer  Name</th>
                         <th>Customer Mobile Number</th>
@@ -296,6 +297,8 @@ $('#SubmitForm').on('submit',function(e){
                             
                                 trHTML +=
                                     '<tr><td>'
+                                    +resp['success']['id']
+                                    + '</td><td>'
                                     +resp['success']['cus_id']
                                     + '</td><td>'
                                     + resp['success']['cus_full_name']
