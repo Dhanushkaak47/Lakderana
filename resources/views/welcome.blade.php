@@ -86,6 +86,34 @@
                 </a> 
                 
             </div>
+
+            <div class="col-md-2 ">
+                <a href="/findashboard">
+                    <div class="card text-center">
+                        <div class="card-header l-bg-orange-dark">
+                            <p class=" mt-2">Financial Section</p>
+                        </div>
+                        <div class="card-body">
+                            <img src="/SystemIMG/271300.png" width="100%;" alt="">
+                        </div>
+                    </div>
+                </a> 
+                
+            </div>
+
+            <div class="col-md-2 ">
+                <a href="/servicesdash">
+                    <div class="card text-center">
+                        <div class="card-header l-bg-orange-dark">
+                            <p class=" mt-2">Service Section</p>
+                        </div>
+                        <div class="card-body">
+                            <img src="/SystemIMG/271300.png" width="100%;" alt="">
+                        </div>
+                    </div>
+                </a> 
+                
+            </div>
         </div>
     </div>
 </body>

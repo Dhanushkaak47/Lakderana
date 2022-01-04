@@ -143,4 +143,16 @@ Route::get('/usermanage',[App\Http\Controllers\adminController::class,'usermanag
 Route::get('/getRole/emp/{id}',[App\Http\Controllers\adminController::class, 'getemp']);
 Route::post('/usersave',[App\Http\Controllers\adminController::class,'usersave']);
 
+//room services
+Route::get('/servicesdash',[App\Http\Controllers\serviceController::class,'opendashboard']);
+Route::get('/services',[App\Http\Controllers\serviceController::class,'servicemanage']);
+Route::post('/saveservices',[App\Http\Controllers\serviceController::class,'saveservice']);
+Route::get('/provide_service/{id}/{roomno}',[App\Http\Controllers\serviceController::class,'servicepageopen']);
+Route::post('/res_service',[App\Http\Controllers\serviceController::class,'serve']);
+
+Route::get('/make_payment',[App\Http\Controllers\paymentHadling::class,'openpage']);
+Route::get('/viewpayslip/{id}/{roomnumber}',[App\Http\Controllers\paymentHadling::class,'paymentdetails']);
+
+
+
 
