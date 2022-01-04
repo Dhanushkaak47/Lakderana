@@ -14,7 +14,10 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <div class="card bg-danger text-center text-light font-weight-bold">
+                        <h3 class="mt-5 mb-5">Please use currect username and password</h3>
+                    </div>
+                    
                 </div>
             </div>
         </div>

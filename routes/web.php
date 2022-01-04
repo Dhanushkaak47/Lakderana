@@ -43,7 +43,7 @@ Route::middleware(['auth','hr'])->group(function (){
     
 
     //attendence record
-    Route::post('/saveAttendence',[App\Http\Controllers\attendenceController::class,'saveattendence']);
+    
     Route::get('/empattendence',[App\Http\Controllers\attendenceController::class,'pageopen']);
     Route::post('/empattendenceHR',[App\Http\Controllers\attendenceController::class,'HRattendence']);
     Route::get('/export-attendence',[App\Http\Controllers\attendenceController::class,'export']);
@@ -62,7 +62,7 @@ Route::middleware(['auth','hr'])->group(function (){
 
 });
 
-
+Route::post('/saveAttendence',[App\Http\Controllers\attendenceController::class,'saveattendence']);
 
 
 
