@@ -50,11 +50,11 @@
     <ul class="navbar-nav">
   
         <li class="nav-item active">
-          <a class="nav-link" href="/admindash">Dashboard</a>
+          <a class="nav-link" href="/customer">Customer Hadeling</a>
         </li>
   
         <li class="nav-item active">
-          <a class="nav-link" href="/usermanage">Users manage</a>
+          <a class="nav-link" href="/make_payment">Make payments</a>
         </li>
 
         <li class="nav-item dropdown active">

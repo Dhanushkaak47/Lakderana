@@ -65,12 +65,15 @@ Route::middleware(['auth','hr'])->group(function (){
 
 // end HR section
 
-// financial Section
+
+Route::middleware(['auth','financial'])->group(function (){
+    // financial Section
 Route::get('/findashboard',[App\Http\Controllers\financialController::class,'opendashboard']);
 Route::get('/finance_salary',[App\Http\Controllers\financialController::class,'paysheet']);
 Route::get('paysheetview/{id}',[App\Http\Controllers\financialController::class,'paysheetview']);
 Route::get('/finance-bar-report',[App\Http\Controllers\financialController::class,'barreport']);
 
+});
 
 //emp reported
 
@@ -90,37 +93,45 @@ Route::post('/customer_registration', [App\Http\Controllers\CustomerDataControll
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/ItemAdd', function () {
-    return view('Itemadd');
-});
 
-Route::post('/itemsave', [App\Http\Controllers\itemController::class, 'saveitem']);
 
-Route::get('/CatAdd', function () {
-    return view('catadd');
-});
+Route::middleware(['auth','liqor'])->group(function (){
+        // financial Section
+        Route::get('/ItemAdd', function () {
+            return view('Itemadd');
+        });
+        
+        Route::post('/itemsave', [App\Http\Controllers\itemController::class, 'saveitem']);
+        
+        Route::get('/CatAdd', function () {
+            return view('catadd');
+        });
+        
+        Route::post('/Addsuppliers', [App\Http\Controllers\AddSupplier::class, 'addsup']);
+        
+        Route::post('/Catadd', [App\Http\Controllers\CatAddController::class, 'addcat']);
+        
+        Route::post('/addorder', [App\Http\Controllers\Ordercontroller::class, 'addorder']);
+        
+        Route::get('/bardashboard', function () {
+            return view('barDashboard');
+        });
+        
+        Route::get('/bardashboard',[App\Http\Controllers\bardashboardController::class,'dashboardopen']);
+        
+        Route::get('/barsale',[App\Http\Controllers\itemController::class,'barsalepage']);
+        Route::get('/liqorview/{id}',[App\Http\Controllers\itemController::class,'liqview']);
+        Route::post('/salesliq', [App\Http\Controllers\itemController::class, 'newsale']);
+        
+        //bar reports
+        Route::get('/monthly-report',[App\Http\Controllers\bardashboardController::class,'monthlyreport']);
+        Route::get('/most-sold',[App\Http\Controllers\bardashboardController::class,'mostsold']);
+        Route::get('/barinventory',[App\Http\Controllers\bardashboardController::class,'inventory']);
+        Route::post('/barserach', [App\Http\Controllers\itemController::class, 'search']);
 
-Route::post('/Addsuppliers', [App\Http\Controllers\AddSupplier::class, 'addsup']);
+    });
 
-Route::post('/Catadd', [App\Http\Controllers\CatAddController::class, 'addcat']);
-
-Route::post('/addorder', [App\Http\Controllers\Ordercontroller::class, 'addorder']);
-
-Route::get('/bardashboard', function () {
-    return view('barDashboard');
-});
-
-Route::get('/bardashboard',[App\Http\Controllers\bardashboardController::class,'dashboardopen']);
-
-Route::get('/barsale',[App\Http\Controllers\itemController::class,'barsalepage']);
-Route::get('/liqorview/{id}',[App\Http\Controllers\itemController::class,'liqview']);
-Route::post('/salesliq', [App\Http\Controllers\itemController::class, 'newsale']);
-
-//bar reports
-Route::get('/monthly-report',[App\Http\Controllers\bardashboardController::class,'monthlyreport']);
-Route::get('/most-sold',[App\Http\Controllers\bardashboardController::class,'mostsold']);
-Route::get('/barinventory',[App\Http\Controllers\bardashboardController::class,'inventory']);
-Route::post('/barserach', [App\Http\Controllers\itemController::class, 'search']);
+    
 
 Route::middleware(['auth','rm'])->group(function (){
         //rooms reservation module
@@ -134,6 +145,17 @@ Route::middleware(['auth','rm'])->group(function (){
     
 });
 
+Route::middleware(['auth','service'])->group(function (){
+            //room services
+    Route::get('/servicesdash',[App\Http\Controllers\serviceController::class,'opendashboard']);
+    Route::get('/services',[App\Http\Controllers\serviceController::class,'servicemanage']);
+    Route::post('/saveservices',[App\Http\Controllers\serviceController::class,'saveservice']);
+    Route::get('/provide_service/{id}/{roomno}',[App\Http\Controllers\serviceController::class,'servicepageopen']);
+    Route::post('/res_service',[App\Http\Controllers\serviceController::class,'serve']);
+
+
+    });
+
 
 
 
@@ -142,5 +164,11 @@ Route::get('/admindash',[App\Http\Controllers\adminController::class,'opendashbo
 Route::get('/usermanage',[App\Http\Controllers\adminController::class,'usermanage']);
 Route::get('/getRole/emp/{id}',[App\Http\Controllers\adminController::class, 'getemp']);
 Route::post('/usersave',[App\Http\Controllers\adminController::class,'usersave']);
+
+
+Route::get('/make_payment',[App\Http\Controllers\paymentHadling::class,'openpage']);
+Route::get('/viewpayslip/{id}/{roomnumber}',[App\Http\Controllers\paymentHadling::class,'paymentdetails']);
+
+
 
 
