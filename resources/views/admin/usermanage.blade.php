@@ -25,7 +25,20 @@
             </div>
         </div>
     </div>
-
+    <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            @if(session()->has('message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>New User added Successfully</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+          </div>
+        </div>
+      </div>
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <form method="post" action="/usersave">
@@ -45,16 +58,24 @@
                                 <label for="depname" class="mt-2 font-weight-bold">Assigning for</label>
                                 <select name="departmentname" id="departmentname" class="form-control" required>
                                     <option value="">Select Section</option>
-                                    @foreach($data as $department)
+                                    <option value="6">Customer Hadeling</option>
+                                    <option value="1">Rooms Reservation</option>
+                                    <option value="2">Liquor Bar</option>
+                                    <option value="3">HR section</option>
+                                    <option value="4">Financial Section</option>
+                                    <option value="5">Service Section</option>
+                                    {{-- @foreach($data as $department)
                                     <option value="{{$department->id}}">{{$department->departmentName}}</option>
-                                    @endforeach
+                                    @endforeach --}}
                                 </select>
 
                                 
                                 <label for="employee" class="mt-3 font-weight-bold">Employee</label>
                                 <select name="employee" id="employee" class="form-control employee" required>
                                     <option value="">Select</option>
-                                    <option value="">Select</option>
+                                    @foreach($data as $department)
+                                    <option value="{{$department->id}}">{{$department->First_name}} {{$department->Last_name}}</option>
+                                    @endforeach
                                 </select>
 
                                 <label for="contact" class="mt-3 font-weight-bold">Emp. Email</label>
@@ -86,7 +107,7 @@
     </div>
 
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         jQuery(document).ready(function ()
         {
                 jQuery('select[name="departmentname"]').on('change',function(){
@@ -115,7 +136,7 @@
                    }
                 });
         });
-    </script>
+    </script> --}}
 
 </body>
 </html>

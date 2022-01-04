@@ -34,20 +34,22 @@
                 
             </div>
             <div class="col-md-2">
-                <a href="/rmdashboard">
-                    <div class="card text-center">
-                        <div class="card-header  l-bg-orange-dark">
-                            <p class=" mt-2">Rooms Reservation</p>
+                <a href="/atten">
+                    <div class="card text-center ">
+                        <div class="card-header l-bg-orange-dark">
+                            <p class=" mt-2">Attendance</p>
                         </div>
                         <div class="card-body">
-                            <img src="/SystemIMG/rooms.png" width="100%;" alt="">
+                            <img src="/SystemIMG/finger.png" width="100%;" alt="">
                         </div>
-                        
-                        
                     </div>
                 </a> 
-                
             </div>
+            
+            
+        </div>
+
+        <div class="row justify-content-center">
             <div class="col-md-2">
                 <a href="/bardashboard">
                     <div class="card text-center">
@@ -61,31 +63,7 @@
                 </a> 
                 
             </div>
-            <div class="col-md-2">
-                <a href="/atten">
-                    <div class="card text-center ">
-                        <div class="card-header l-bg-orange-dark">
-                            <p class=" mt-2">Attendance</p>
-                        </div>
-                        <div class="card-body">
-                            <img src="/SystemIMG/finger.png" width="100%;" alt="">
-                        </div>
-                    </div>
-                </a> 
-            </div>
-            <div class="col-md-2 ">
-                <a href="/HRsection">
-                    <div class="card text-center">
-                        <div class="card-header l-bg-orange-dark">
-                            <p class=" mt-2">HR Section</p>
-                        </div>
-                        <div class="card-body">
-                            <img src="/SystemIMG/271300.png" width="100%;" alt="">
-                        </div>
-                    </div>
-                </a> 
-                
-            </div>
+            
 
             <div class="col-md-2 ">
                 <a href="/findashboard">
@@ -106,6 +84,37 @@
                     <div class="card text-center">
                         <div class="card-header l-bg-orange-dark">
                             <p class=" mt-2">Service Section</p>
+                        </div>
+                        <div class="card-body">
+                            <img src="/SystemIMG/271300.png" width="100%;" alt="">
+                        </div>
+                    </div>
+                </a> 
+                
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-2">
+                <a href="/rmdashboard">
+                    <div class="card text-center">
+                        <div class="card-header  l-bg-orange-dark">
+                            <p class=" mt-2">Rooms Reservation</p>
+                        </div>
+                        <div class="card-body">
+                            <img src="/SystemIMG/rooms.png" width="100%;" alt="">
+                        </div>
+                        
+                        
+                    </div>
+                </a> 
+                
+            </div>
+            <div class="col-md-2 ">
+                <a href="/HRsection">
+                    <div class="card text-center">
+                        <div class="card-header l-bg-orange-dark">
+                            <p class=" mt-2">HR Section</p>
                         </div>
                         <div class="card-body">
                             <img src="/SystemIMG/271300.png" width="100%;" alt="">

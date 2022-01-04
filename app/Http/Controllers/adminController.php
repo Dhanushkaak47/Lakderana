@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\employee;
 use App\Models\department;
 use App\Models\hotelChain;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class adminController extends Controller
     public function usermanage()
     {
         # code...
-        $data = department::all();
+        $data = employee::all();
         $hotel = hotelChain::all();
         return view('admin.usermanage', compact('data','hotel'));
     }
@@ -47,5 +48,7 @@ class adminController extends Controller
         $userdata->password=$hashed;
         $userdata->user_level=$request->departmentname;
         $userdata->save();
+
+        return redirect()->back()->with('message','done');
     }
 }

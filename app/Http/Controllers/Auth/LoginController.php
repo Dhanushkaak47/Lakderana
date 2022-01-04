@@ -46,11 +46,14 @@ class LoginController extends Controller
         elseif($user->user_Level == 3){
             return redirect()->to('/HRsection');
         }
-        elseif($user->user_Level == 3){
-            return redirect()->to('/transport-profile');
+        elseif($user->user_Level == 6){
+            return redirect()->to('/customer');
         }
         elseif($user->user_Level == 4){
-            return redirect()->to('/adminDashboard');
+            return redirect()->to('/findashboard');
+        }
+        elseif($user->user_Level == 2){
+            return redirect()->to('/bardashboard');
         }
         else{
             return redirect()->to('/');
