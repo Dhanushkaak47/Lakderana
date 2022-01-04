@@ -72,7 +72,7 @@
                             <p class=" mt-2">Financial Section</p>
                         </div>
                         <div class="card-body">
-                            <img src="/SystemIMG/271300.png" width="100%;" alt="">
+                            <img src="/SystemIMG/finan.png" width="100%;" alt="">
                         </div>
                     </div>
                 </a> 
@@ -86,7 +86,7 @@
                             <p class=" mt-2">Service Section</p>
                         </div>
                         <div class="card-body">
-                            <img src="/SystemIMG/271300.png" width="100%;" alt="">
+                            <img src="/SystemIMG/649236.png" width="100%;" alt="">
                         </div>
                     </div>
                 </a> 
@@ -104,11 +104,8 @@
                         <div class="card-body">
                             <img src="/SystemIMG/rooms.png" width="100%;" alt="">
                         </div>
-                        
-                        
                     </div>
                 </a> 
-                
             </div>
             <div class="col-md-2 ">
                 <a href="/HRsection">
@@ -121,7 +118,6 @@
                         </div>
                     </div>
                 </a> 
-                
             </div>
         </div>
     </div>
