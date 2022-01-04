@@ -37,6 +37,10 @@ Route::middleware(['auth','hr'])->group(function (){
     //employees
     Route::get('/employees',[App\Http\Controllers\employeeController::class,'pageopen']);
     Route::post('/empSave',[App\Http\Controllers\employeeController::class,'empsave']);
+    Route::get('/empremove/{id}',[App\Http\Controllers\employeeController::class,'deleteemp']);
+    Route::get('/empradd/{id}',[App\Http\Controllers\employeeController::class,'readd']);
+    
+    
 
     //attendence record
     Route::post('/saveAttendence',[App\Http\Controllers\attendenceController::class,'saveattendence']);
@@ -87,13 +91,17 @@ Route::get('/empcard/{id}',[App\Http\Controllers\employeeController::class,'proc
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/customer', [App\Http\Controllers\CustomerDataController::class, 'index'])->name('customer');
-Route::post('/customer', [App\Http\Controllers\CustomerDataController::class, 'search'])->name('customer');
-Route::post('/customer_registration', [App\Http\Controllers\CustomerDataController::class, 'register'])->name('customer_registration');
+
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+
+Route::middleware(['auth','cushad'])->group(function (){
+    Route::get('/customer', [App\Http\Controllers\CustomerDataController::class, 'index'])->name('customer');
+    Route::post('/customer', [App\Http\Controllers\CustomerDataController::class, 'search'])->name('customer');
+    Route::post('/customer_registration', [App\Http\Controllers\CustomerDataController::class, 'register'])->name('customer_registration');
+});
 
 Route::middleware(['auth','liqor'])->group(function (){
         // financial Section
