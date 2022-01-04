@@ -115,8 +115,44 @@ class employeeController extends Controller
 
     public function procard($id)
     {
-        $employee = employee::where('id',$id);
+        $employee = employee::where('id',$id)->get();
+
+        $employees=DB::table('employees')
+        ->select('employees.*','departments.departmentName','job_roles.rolename','hotel_chains.City')
+        ->join('departments','departments.id','=','employees.departmentID')
+        ->join('job_roles','job_roles.id','=','employees.jobRoleID')
+        ->join('hotel_chains','hotel_chains.id','=','employees.workingPlace')
+        ->where('employees.id',$id)
+        ->get();
+
+        // $pdf = PDF::loadView('HR.emp_profile_card',compact('employee'))->setOptions(['defaultFont' => 'sans-serif']);
+
+        // $date = Carbon::today()->toDateString();
+        // return $pdf->download('EmployeesReport'.$date.'.pdf');
 
         return view('HR.emp_profile_card', compact('employee'));
+    }
+
+    public function deleteemp($id)
+    {
+        # code...
+        $updateWinner = DB::table('employees')->where('id', $id)->update([
+            'status' => 0,
+            
+        ]);
+
+        return redirect()->back()->with('remove','done');
+
+    }
+
+    public function readd($id)
+    {
+        # code...
+        $updateWinner = DB::table('employees')->where('id', $id)->update([
+            'status' => 1,
+            
+        ]);
+
+        return redirect()->back()->with('readd','done');
     }
 }

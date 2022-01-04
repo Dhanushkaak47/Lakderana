@@ -37,6 +37,22 @@
                     </button>
                 </div>
             @endif
+            @if(session()->has('remove'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>employee removed Successfully</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+            @if(session()->has('readd'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>employee active now</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
           </div>
         </div>
       </div>
@@ -63,8 +79,8 @@
                     </thead>
                     <tbody>
                     @foreach($employees as $empdata)
+                    @if($empdata->status)
                         <tr>
-                            
                             <td>{{$empdata->id}}</td>
                             <td>{{$empdata->First_name}} {{$empdata->Last_name}}</td>
                             <td>{{$empdata->Address}}</td>
@@ -74,9 +90,24 @@
                             <td>{{$empdata->rolename}}</td>
                             <td>{{$empdata->City}}</td>
                             <td><a href="#"><i class="fa fa-pencil-square text-warning" aria-hidden="true"></i></a></td>
-                            <td><a href="#"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
+                            <td><a href="/empremove/{{$empdata->id}}"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
                             <td><a href="/empcard/{{$empdata->id}}"><i class="fa fa-print text-warning" aria-hidden="true"></i></a></td>
                         </tr>
+                     @else
+                        <tr  class="bg-danger">
+                            <td>{{$empdata->id}}</td>
+                            <td>{{$empdata->First_name}} {{$empdata->Last_name}}</td>
+                            <td>{{$empdata->Address}}</td>
+                            <td>{{$empdata->contact}}</td>
+                            <td>{{$empdata->Hire_date}}</td>
+                            <td>{{$empdata->departmentName}}</td>
+                            <td>{{$empdata->rolename}}</td>
+                            <td>{{$empdata->City}}</td>
+                            <td><a href="#"><i class="fa fa-pencil-square text-warning" aria-hidden="true"></i></a></td>
+                            <td><a href="/empradd/{{$empdata->id}}"><i class="fa fa-chevron-circle-up text-success" aria-hidden="true"></i></a></td>
+                            <td><a href="/empcard/{{$empdata->id}}"><i class="fa fa-print text-warning" aria-hidden="true"></i></a></td>
+                        </tr>
+                    @endif
                       @endforeach
                     </tbody>
                   </table>
