@@ -114,7 +114,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content bg-dark">
       <div class="modal-header text-light">
-        <h3 class="modal-title" id="exampleModalLabel">Add New Items</h3>
+        <h3 class="modal-title" id="exampleModalLabel">Add New Order</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
