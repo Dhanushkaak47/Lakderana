@@ -42,7 +42,7 @@
   
           // Set chart options
           
-          var options = {title: 'Monthly Selling (LKR)'}; 
+          var options = {title: 'Monthly Outcome (LKR)'}; 
           
           // Instantiate and draw our chart, passing in some options.
           var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
@@ -67,7 +67,7 @@
   
           // Set chart options
           
-          var options = {title: 'Monthly Selling (LKR)'}; 
+          var options = {title: 'Monthly income (LKR)'}; 
           
           // Instantiate and draw our chart, passing in some options.
           var chart = new google.visualization.ColumnChart(document.getElementById('pie'));

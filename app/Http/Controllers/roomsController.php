@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\rooms;
 use App\Models\roomtype;
+use Carbon\Carbon;
 use App\Models\reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +15,20 @@ class roomsController extends Controller
     //
     public function opendashboard()
     {
-        return view('reservation.res_dash');
+
+        $now = Carbon::now();
+        $thismonth = $now->month;
+
+        $monthlyres= reservation::all()->count();
+        $running= reservation::where('payment',0)->count();
+
+        $weekdays = reservation::selectRaw('year(created_at) as year, DAYNAME(created_at) as week, COUNT(id) as total_sale')
+            ->groupBy('year','week')
+            ->orderByRaw('min(created_at) asc')
+            ->get();
+
+       
+        return view('reservation.res_dash', compact('monthlyres','running','weekdays'));
     }
 
     public function openrooms()
