@@ -20,7 +20,7 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="title text-center font-weight-bold">Payments Hadeling</h3>
+                <h3 class="title text-center font-weight-bold">Payments Handeling</h3>
             </div>
         </div>
     </div>
