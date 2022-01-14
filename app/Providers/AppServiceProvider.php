@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
                 $view2->with('reservationdata', \App\Models\rooms::select('rooms.roomNo','reservations.id')
                     ->join('reservations','reservations.roomNo','=','rooms.roomNo')
                     ->orderBy('reservations.id','DESC')
-                    ->where('rooms.status', 0 )->get());
+                    ->where([['rooms.status', 0],['reservations.payment',0]] )->get());
 
             }
             

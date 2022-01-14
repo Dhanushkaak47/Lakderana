@@ -88,4 +88,23 @@ class itemController extends Controller
         //->where([['add_rests.restaddress','like','%'. $request->location.'%'],['foodmanages.Itemname','like','%'.$request->item.'%'],['foodmanages.price','<=',$request->money]])
         return view('barsale', compact('baritem'));
     }
+
+    public function finishorder($id)
+    {
+        # code...
+        $total = DB::select("SELECT SUM(total) as total from baritems where orderID=$id limit 1");
+        
+
+        $purchases = DB::table('baritems')
+        ->where('orderID', '=', $id)
+        ->sum('total');
+
+        $updateWinner = DB::table('orders')->where('id', $id)->update([
+            'payementstatus' => 1,
+            'payementvalue' => $purchases,
+        ]);
+        
+        $baritem=baritem::all();
+        return view('barsale', compact('baritem'));
+    }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CustomerData;
+use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 
 class CustomerDataController extends Controller
 {
@@ -100,6 +102,35 @@ class CustomerDataController extends Controller
             return response()->json(['error'=>"error"]);
         }
        
+    }
+
+    public function reportpage()
+    {
+        $data = CustomerData::all();
+        return view('customer.customerrep', compact('data'));
+    }
+
+    public function exportreport()
+    {
+        # code...
+        $data = CustomerData::all();
+
+        $pdf = PDF::loadView('customer.export',compact('data'))->setOptions(['defaultFont' => 'sans-serif']);
+
+        $date = Carbon::today()->toDateString();
+        return $pdf->download('Customer'.$date.'.pdf');
+
+        return view('customer.export', compact('data'));
+    }
+
+    public function filter(Request $request)
+    {
+        # code...
+        $from = $request->dateone;
+        $to = $request->datetwo;
+
+        $data=CustomerData::whereBetween('created_at', [$from, $to])->get();
+        return view('customer.customerrep', compact('data'));
     }
     
 }

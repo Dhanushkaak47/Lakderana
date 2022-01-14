@@ -57,6 +57,10 @@
           <a class="nav-link" href="/make_payment">Make payments</a>
         </li>
 
+        <li class="nav-item active">
+          <a class="nav-link" href="/customer-reports">Reports</a>
+        </li>
+
         <li class="nav-item dropdown active">
           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               {{ Auth::user()->name }}
