@@ -191,10 +191,7 @@
 					<th><span contenteditable>Date</span></th>
 					<td><p>{{$lastMonth}}</p></td>
 				</tr>
-				<tr>
-					<th><span contenteditable>Amount Due</span></th>
-					<td><span id="prefix" contenteditable></span><span>600.00</span></td>
-				</tr>
+				
 			</table>
             
 			<table class="inventory">
@@ -218,7 +215,6 @@
 					</tr>
                    
                     @endforeach
-                    
 				</tbody>
 			</table>
 
@@ -254,7 +250,7 @@
 			<table class="balance">
 				<tr>
 					<th><span contenteditable>Total</span></th>
-					<td><span data-prefix></span><span><p id="totaltext"></p></span></td>
+					<td><span data-prefix></span><span><p id="totaltext">34400.00</p></span></td>
 				</tr>
 			</table>
 		</article>

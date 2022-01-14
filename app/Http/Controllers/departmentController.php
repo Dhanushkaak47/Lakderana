@@ -29,4 +29,25 @@ class departmentController extends Controller
         $departmentData = department::all();
         return view('HR.department', compact('departmentData'));
     }
+
+    public function dataupdateopen($id)
+    {
+        # code...
+        $dep = department::where('id', $id)->first();
+        return view('HR.departnentUpdate', compact('dep'));
+    }
+
+    public function dataupdatsave(Request $request)
+    {
+        # code...
+        $id=$request->id;
+
+        $data=department::find($id);
+        $data->departmentName=$request->Departmentname;
+        $data->contactNo=$request->contact;
+        $data->save();
+
+        $departmentData = department::all();
+        return view('HR.department', compact('departmentData'));
+    }
 }

@@ -155,4 +155,43 @@ class employeeController extends Controller
 
         return redirect()->back()->with('readd','done');
     }
+
+    public function openupadate($id)
+    {
+        # code...
+        $data=employee::where('id', $id)->first();
+        $hotelchain = hotelChain::all();
+        return view('HR.employeeupdate', compact('data','hotelchain'));
+    }
+
+    public function empUpdate(Request $request)
+    {
+        # code...
+        $id=$request->id;
+
+        $data=employee::find($id);
+        $data->First_name=$request->firstname;
+        $data->Last_name=$request->lastname;
+        $data->DOB=$request->dob;
+        $data->contact=$request->contact;
+        $data->email=$request->Email;
+        $data->workingPlace=$request->Assign;
+        $data->basic_salary=$request->basicSal;
+        $data->travel_allow=$request->travelAloow;
+        $data->save();
+
+        $departmentData = department::all();
+
+        $hotelchain = hotelChain::all();
+        
+ 
+         $employees=DB::table('employees')
+         ->select('employees.*','departments.departmentName','job_roles.rolename','hotel_chains.City')
+         ->join('departments','departments.id','=','employees.departmentID')
+         ->join('job_roles','job_roles.id','=','employees.jobRoleID')
+         ->join('hotel_chains','hotel_chains.id','=','employees.workingPlace')
+         ->get();
+ 
+         return view('HR.Employees', compact('departmentData','hotelchain','employees'));
+    }
 }

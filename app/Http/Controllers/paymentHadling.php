@@ -47,7 +47,13 @@ class paymentHadling extends Controller
         ->where('res_services.reservation_id',$id)
         ->get();
 
-        
+        $servicescount=DB::table('res_services')
+        ->select('res_services.qty','dinings.*')
+        ->join('dinings','dinings.id','=','res_services.service')
+        ->where('res_services.reservation_id',$id)
+        ->count();
+
+        //dd($servicescount);
 
         $customer=DB::table('reservations')
         ->select('customer_data.*')

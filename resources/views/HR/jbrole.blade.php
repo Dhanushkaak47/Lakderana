@@ -36,6 +36,14 @@
                     </button>
                 </div>
             @endif
+            @if(session()->has('remove'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Removed</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
           </div>
         </div>
       </div>
@@ -59,7 +67,7 @@
                             <td>{{$data->rolename}}</td>
                             <td>{{$data->departmentName}}</td>
                             <td><a href="#"><i class="fa fa-pencil-square text-warning" aria-hidden="true"></i></a></td>
-                            <td><a href="#"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
+                            <td><a href="/removerole/{{$data->id}}"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
                         </tr>
                         @endforeach
                     </tbody>

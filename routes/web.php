@@ -29,16 +29,24 @@ Route::middleware(['auth','hr'])->group(function (){
         // department
     Route::post('/saveDepData',[App\Http\Controllers\departmentController::class, 'save']);
     Route::get('/department',[App\Http\Controllers\departmentController::class,'pageOpen']);
+    Route::get('/depupdate/{id}',[App\Http\Controllers\departmentController::class,'dataupdateopen']);
+    Route::post('/updatedepartment',[App\Http\Controllers\departmentController::class,'dataupdatsave']);
+    
+    
 
     //jbroles
     Route::post('/jbrolesave',[App\Http\Controllers\jbRoleController::class,'save']);
     Route::get('/jbroles',[App\Http\Controllers\jbRoleController::class,'pageOpen']);
+    Route::get('/removerole/{id}',[App\Http\Controllers\jbRoleController::class,'remove']);
+    
 
     //employees
     Route::get('/employees',[App\Http\Controllers\employeeController::class,'pageopen']);
     Route::post('/empSave',[App\Http\Controllers\employeeController::class,'empsave']);
     Route::get('/empremove/{id}',[App\Http\Controllers\employeeController::class,'deleteemp']);
     Route::get('/empradd/{id}',[App\Http\Controllers\employeeController::class,'readd']);
+    Route::get('/empUpdate/{id}',[App\Http\Controllers\employeeController::class,'openupadate']);
+    Route::post('/empUpdate',[App\Http\Controllers\employeeController::class,'empUpdate']);
     
     
 
@@ -101,13 +109,21 @@ Route::middleware(['auth','cushad'])->group(function (){
     Route::get('/customer', [App\Http\Controllers\CustomerDataController::class, 'index'])->name('customer');
     Route::post('/customer', [App\Http\Controllers\CustomerDataController::class, 'search'])->name('customer');
     Route::post('/customer_registration', [App\Http\Controllers\CustomerDataController::class, 'register'])->name('customer_registration');
+    Route::get('/customer-reports', [App\Http\Controllers\CustomerDataController::class, 'reportpage']);
+    Route::get('/export-cus-data', [App\Http\Controllers\CustomerDataController::class, 'exportreport']);
+    Route::post('/customerdatafilter', [App\Http\Controllers\CustomerDataController::class, 'filter']);
+    
+    
 });
 
 Route::middleware(['auth','liqor'])->group(function (){
-        // financial Section
+        // order Section
         Route::get('/ItemAdd', function () {
             return view('Itemadd');
         });
+
+        
+        Route::get('/orderfinish/{id}',[App\Http\Controllers\itemController::class,'finishorder']);
         
         Route::post('/itemsave', [App\Http\Controllers\itemController::class, 'saveitem']);
         
@@ -137,6 +153,14 @@ Route::middleware(['auth','liqor'])->group(function (){
         Route::get('/barinventory',[App\Http\Controllers\bardashboardController::class,'inventory']);
         Route::post('/barserach', [App\Http\Controllers\itemController::class, 'search']);
 
+        //supplier
+        Route::get('/supplier',[App\Http\Controllers\AddSupplier::class,'opendata']);
+        Route::get('/supplierBan/{id}',[App\Http\Controllers\AddSupplier::class,'delete']);
+        Route::get('/supplierUnBan/{id}',[App\Http\Controllers\AddSupplier::class,'up']);
+        Route::get('/supplierUpd/{id}',[App\Http\Controllers\AddSupplier::class,'update']);
+        Route::post('/savesuppdata',[App\Http\Controllers\AddSupplier::class,'updatedata']);
+        
+        
     });
 
     

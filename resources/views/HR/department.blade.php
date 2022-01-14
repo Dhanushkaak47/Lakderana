@@ -58,7 +58,7 @@
                         <td>{{$data->id}}</td>
                         <td>{{$data->departmentName}}</td>
                         <td>{{$data->contactNo}}</td>
-                        <td><a href="#"><i class="fa fa-pencil-square text-warning" aria-hidden="true"></i></a></td>
+                        <td><a href="/depupdate/{{$data->id}}"><i class="fa fa-pencil-square text-warning" aria-hidden="true"></i></a></td>
                         <td><a href="#"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
                       </tr>
                       @endforeach

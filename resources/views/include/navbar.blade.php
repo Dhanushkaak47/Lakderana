@@ -16,7 +16,7 @@
               <a class="nav-link " href="/"data-toggle="modal" data-target="#order">Item Add</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="#">Supplier Manage</a>
+              <a class="nav-link " href="/supplier">Supplier Manage</a>
             </li>
             <li class="nav-item">
               <a class="nav-link " href="/CatAdd">Categories</a>

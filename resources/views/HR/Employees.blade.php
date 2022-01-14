@@ -89,7 +89,7 @@
                             <td>{{$empdata->departmentName}}</td>
                             <td>{{$empdata->rolename}}</td>
                             <td>{{$empdata->City}}</td>
-                            <td><a href="#"><i class="fa fa-pencil-square text-warning" aria-hidden="true"></i></a></td>
+                            <td><a href="/empUpdate/{{$empdata->id}}"><i class="fa fa-pencil-square text-warning" aria-hidden="true"></i></a></td>
                             <td><a href="/empremove/{{$empdata->id}}"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
                             <td><a href="/empcard/{{$empdata->id}}"><i class="fa fa-print text-warning" aria-hidden="true"></i></a></td>
                         </tr>
@@ -103,7 +103,7 @@
                             <td>{{$empdata->departmentName}}</td>
                             <td>{{$empdata->rolename}}</td>
                             <td>{{$empdata->City}}</td>
-                            <td><a href="#"><i class="fa fa-pencil-square text-warning" aria-hidden="true"></i></a></td>
+                            <td><a href="/empUpdate/{{$empdata->id}}"><i class="fa fa-pencil-square text-warning" aria-hidden="true"></i></a></td>
                             <td><a href="/empradd/{{$empdata->id}}"><i class="fa fa-chevron-circle-up text-success" aria-hidden="true"></i></a></td>
                             <td><a href="/empcard/{{$empdata->id}}"><i class="fa fa-print text-warning" aria-hidden="true"></i></a></td>
                         </tr>

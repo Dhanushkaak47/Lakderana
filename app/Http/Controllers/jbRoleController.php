@@ -32,8 +32,19 @@ class jbRoleController extends Controller
         $rolesdata=DB::table('job_roles')
         ->select('job_roles.*','departments.departmentName')
         ->join('departments','departments.id','=','job_roles.depID')
+        ->where('job_roles.status',1)
         ->get();
 
         return view('HR.jbrole', compact('departmentData','rolesdata'));
+    }
+
+    public function remove($id)
+    {
+        # code...
+        $delete = DB::table('job_roles')->where('id', $id)->update([
+            'status' => 0,
+        ]);
+
+        return redirect()->back()->with('remove','done');
     }
 }
