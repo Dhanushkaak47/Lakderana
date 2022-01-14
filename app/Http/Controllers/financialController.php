@@ -17,7 +17,66 @@ class financialController extends Controller
     public function opendashboard()
     {
         # code...
-        return view('financial.dashboard');
+        $sales = barsale::selectRaw('year(created_at) as year, monthname(created_at) as month, sum(line_total) as total_sale')
+            ->groupBy('year','month')
+            ->orderByRaw('min(created_at) asc')
+            ->get();
+        
+        $barexpen = baritem::selectRaw('year(created_at) as year, monthname(created_at) as month, sum(total) as total_expense')
+            ->groupBy('year','month')
+            ->orderByRaw('min(created_at) asc')
+            ->get();
+            
+        $salariespending = DB::select("SELECT SUM(basic_salary) as basicsal, SUM(travel_allowence) as ta, SUM(over_time) as ot, SUM(weekend_bonus) as wb, SUM(other_bonus) as ob, SUM(nopay_leave) as nl, SUM(epf) as epf from emp_salaries where pay_status= 0");
+        
+
+        $resserviceincome = DB::table('res_services')
+            ->join('dinings', 'dinings.id', '=', 'res_services.service')
+            ->selectRaw('SUM(dinings.price * res_services.qty) as data')
+            ->first();
+
+        
+        $bar = barsale::sum('line_total');
+        
+        $barexpenses = baritem::sum('total');
+
+        
+        return view('financial.dashboard', compact('sales','barexpen','salariespending','resserviceincome','bar','barexpenses'));
+    }
+
+    public function filter(Request $request)
+    {
+        # code...
+        $dateone = $request->dateone;
+        $datetwo = $request->enddate;
+
+        $sales = barsale::selectRaw('year(created_at) as year, monthname(created_at) as month, sum(line_total) as total_sale')
+        ->groupBy('year','month')
+        ->orderByRaw('min(created_at) asc')
+        ->get();
+        
+        $barexpen = baritem::selectRaw('year(created_at) as year, monthname(created_at) as month, sum(total) as total_expense')
+            ->groupBy('year','month')
+            ->orderByRaw('min(created_at) asc')
+            ->get();
+            
+        $salariespending = DB::select("SELECT SUM(basic_salary) as basicsal, SUM(travel_allowence) as ta, SUM(over_time) as ot, SUM(weekend_bonus) as wb, SUM(other_bonus) as ob, SUM(nopay_leave) as nl, SUM(epf) as epf from emp_salaries where pay_status= 0");
+        
+
+        $resserviceincome = DB::table('res_services')
+            ->join('dinings', 'dinings.id', '=', 'res_services.service')
+            ->whereBetween('res_services.created_at', [$dateone, $datetwo])
+            ->selectRaw('SUM(dinings.price * res_services.qty) as data')
+            ->first();
+
+        
+        $bar = barsale::whereBetween('created_at', [$dateone, $datetwo])->sum('line_total');
+        
+        $barexpenses = baritem::whereBetween('created_at', [$dateone, $datetwo])->sum('total');
+
+        
+        return view('financial.dashboard', compact('sales','barexpen','salariespending','resserviceincome','bar','barexpenses'));
+
     }
 
     public function paysheet()
@@ -80,5 +139,35 @@ class financialController extends Controller
             //dd($mostsold);
 
         return view('financial.barincome', compact('outcomes','income','barsales'));
+    }
+
+    public function filterbar(Request $request)
+    {
+        $dateone = $request->dateone;
+        $datetwo = $request->enddate;
+        # code...
+       
+        $outcomes = baritem::selectRaw('year(created_at) as year, monthname(created_at) as month, sum(total) as total_sale')
+        ->groupBy('year','month')
+        ->whereBetween('created_at', [$dateone, $datetwo])
+        ->orderByRaw('min(created_at) asc')
+        ->get();
+
+        $income = barsale::selectRaw('year(created_at) as year, monthname(created_at) as month, sum(line_total) as total_sale')
+        ->groupBy('year','month')
+        ->whereBetween('created_at', [$dateone, $datetwo])
+        ->orderByRaw('min(created_at) asc')
+        ->get();
+
+        $barsales=DB::table('barsales')
+        ->select('barsales.*','baritems.itemName')
+        ->whereBetween('barsales.created_at', [$dateone, $datetwo])
+        ->join('baritems','baritems.id','=','barsales.item_id')
+        ->get();
+    
+        //dd($mostsold);
+
+    return view('financial.barincome', compact('outcomes','income','barsales'));
+        
     }
 }

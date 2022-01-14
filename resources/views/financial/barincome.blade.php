@@ -78,12 +78,35 @@
       </script>
 
 </head>
-<body style="background: rgb(25,69,157);">
+<body style="">
     @include('include.logo')
 
     @include('include.financialNavbar')
 
-    <div class="container-fluid mt-5 text-light font-weight-bold">
+    <div class="container-fluid mt-5 text-dark font-weight-bold">
+        <form action="/barfilter" method="post">
+            @csrf
+            <div class="row justify-content-center text-dark font-weight-bold  mb-5">
+                
+                    <div class="col-md-3">
+                    <label for="">Start date</label>
+                    <input type="date" name="dateone" id="dateone" class="form-control">
+                    </div> 
+                    <div class="col-md-3">
+                        <label for="">End date</label>
+                        <input type="date" name="enddate" id="enddate" class="form-control">
+                    </div> 
+                    <div class="col-md-1">
+                        <label for=""></label>
+                        <input type="submit" value="Filter" class="btn btn-success btn-block mt-2">
+                    </div>    
+                    <div class="col-md-1">
+                        <label for=""></label>
+                        <a href="/finance-bar-report" class="btn btn-warning btn-block mt-2">Reset</a>
+                    </div>    
+                
+            </div>
+        </form> 
         <div class="row">
             <div class="col-md-6">
                 <h3>Outcomes</h3>
