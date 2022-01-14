@@ -84,6 +84,10 @@ Route::get('/findashboard',[App\Http\Controllers\financialController::class,'ope
 Route::get('/finance_salary',[App\Http\Controllers\financialController::class,'paysheet']);
 Route::get('paysheetview/{id}',[App\Http\Controllers\financialController::class,'paysheetview']);
 Route::get('/finance-bar-report',[App\Http\Controllers\financialController::class,'barreport']);
+Route::post('/finanseFilter',[App\Http\Controllers\financialController::class,'filter']);
+Route::post('/barfilter',[App\Http\Controllers\financialController::class,'filterbar']);
+
+
 
 });
 
@@ -174,6 +178,8 @@ Route::middleware(['auth','rm'])->group(function (){
     Route::get('/roomres',[App\Http\Controllers\roomsController::class,'openres']);
     Route::get('/getrooms/roomsno/{id}',[App\Http\Controllers\roomsController::class, 'getrooms']);
     Route::post('/reservationsave',[App\Http\Controllers\roomsController::class,'roomreserve']);
+    Route::get('/export-reservation',[App\Http\Controllers\roomsController::class,'researvationreport']);
+    
     
 });
 

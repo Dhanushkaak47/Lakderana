@@ -67,12 +67,12 @@
                     <div class="card-statistic-3 p-4">
                         <div class="card-icon card-icon-large"><i class="fas fa-shopping-cart"></i></div>
                         <div class="mb-4">
-                            <h5 class="card-title mb-0">Monthly reservation</h5>
+                            <h5 class="card-title mb-0">Monthly reservation <span class="text-warning"><a href="/export-reservation"><i class="fa fa-print text-warning" aria-hidden="true"></i></a></span></h5>
                         </div>
                         <div class="row align-items-center mb-2 d-flex">
                             <div class="col-8">
                                 <h2 class="d-flex align-items-center mb-0">
-                                    {{$monthlyres}}
+                                    {{$monthlyres}}  
                                 </h2>
                             </div>
                         </div>

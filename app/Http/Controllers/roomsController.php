@@ -9,6 +9,7 @@ use App\Models\reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class roomsController extends Controller
 {
@@ -26,7 +27,7 @@ class roomsController extends Controller
             ->groupBy('year','week')
             ->orderByRaw('min(created_at) asc')
             ->get();
-
+       
        
         return view('reservation.res_dash', compact('monthlyres','running','weekdays'));
     }
@@ -106,5 +107,25 @@ class roomsController extends Controller
         ]);
 
         return redirect()->back()->with('message','success');
+    }
+
+    public function researvationreport()
+    {
+        # code...
+        $now = Carbon::now();
+        $thismonth = $now->month;
+
+        $resdata=DB::table('reservations')
+        ->select('reservations.*','customer_data.cus_full_name','customer_data.cus_id','customer_data.mobile')
+        ->join('customer_data','customer_data.id','=','reservations.cus_id')
+        ->whereMonth('reservations.created_at', $thismonth)
+        ->get();
+
+        $pdf = PDF::loadView('reservation.resreport',compact('resdata'))->setOptions(['defaultFont' => 'sans-serif']);
+
+        $date = Carbon::today()->toDateString();
+        return $pdf->download('Resevation'.$date.'.pdf');
+
+        return view('reservation.resreport', compact('resdata'));
     }
 }
