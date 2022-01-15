@@ -250,7 +250,7 @@
 			<table class="balance">
 				<tr>
 					<th><span contenteditable>Total</span></th>
-					<td><span data-prefix></span><span><p id="totaltext">34400.00</p></span></td>
+					<td><span data-prefix></span><span><p id="totaltext">181900.00</p></span></td>
 				</tr>
 			</table>
 		</article>
