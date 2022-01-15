@@ -23,6 +23,14 @@
                 <div class="row">
                     <div class="col">
                         <h3 class="text-center mt-5">Liquor Sales</h3>
+                        @if(session()->has('message'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Deleted succussfully</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
                         <hr>
                     </div>
                 </div>
@@ -71,6 +79,9 @@
                             </div>
                         </a>
                         @endif
+                        <div class="card-footer text-center">
+                            <a href="baritemdelete/{{$datas->id}}"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                        </div>
                     </div>
                 
             </div>

@@ -47,7 +47,7 @@ class itemController extends Controller
     public function barsalepage()
     {
         # code...
-        $baritem=baritem::all();
+        $baritem=baritem::where('status', 1)->get();
         return view('barsale', compact('baritem'));
     }
 
@@ -106,5 +106,14 @@ class itemController extends Controller
         
         $baritem=baritem::all();
         return view('barsale', compact('baritem'));
+    }
+
+    public function deletedata($id)
+    {
+        $updateWinner = DB::table('baritems')->where('id', $id)->update([
+            'status' => 0,
+        ]);
+        
+        return redirect()->back()->with('message','success');
     }
 }
