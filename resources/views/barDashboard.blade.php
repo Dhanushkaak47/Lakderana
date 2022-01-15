@@ -48,6 +48,7 @@
           var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
           chart.draw(data, options);
         }
+        
 
         google.charts.setOnLoadCallback(drawChart1);
         function drawChart1() {
@@ -74,6 +75,35 @@
           chart.draw(data, options);
         }
 
+        google.charts.setOnLoadCallback(drawChart2);
+        
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        function drawChart2() {
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Day');
+            data.addColumn('number', 'Sales');
+            data.addRows([
+            @php 
+            foreach($dailysale as $dailysales){ 
+                echo "['".$dailysales->day."', ".$dailysales->total_sales."],";}
+        
+            @endphp
+            
+            
+            ]);
+
+            // Set chart options
+            
+            var options = {title: 'Daily Selling (LKR)'}; 
+            
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_divs'));
+            chart.draw(data, options);
+        }
+
 
       </script>
 </head>
@@ -83,6 +113,29 @@
     @include('include.navbar')
 
     <div class="container mt-5">
+        <form action="/barDatafilter" method="post">
+            @csrf
+            <div class="row justify-content-center text-dark font-weight-bold  mb-5">
+                
+                    <div class="col-md-3">
+                    <label for="">Start date</label>
+                    <input type="date" name="dateone" id="dateone" class="form-control">
+                    </div> 
+                    <div class="col-md-3">
+                        <label for="">End date</label>
+                        <input type="date" name="enddate" id="enddate" class="form-control">
+                    </div> 
+                    <div class="col-md-1">
+                        <label for=""></label>
+                        <input type="submit" value="Filter" class="btn btn-success btn-block mt-2">
+                    </div>    
+                    <div class="col-md-1">
+                        <label for=""></label>
+                        <a href="/bardashboard" class="btn btn-warning btn-block mt-2">Reset</a>
+                    </div>    
+                
+            </div>
+        </form> 
         <div class="row justify-content-center">
             <div class="col-xl-3 col-lg-6">
                 <div class="card l-bg-cherry">
@@ -111,7 +164,7 @@
                     <div class="card-statistic-3 p-4">
                         <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
                         <div class="mb-4">
-                            <h5 class="card-title mb-0">Last month outcome</h5>
+                            <h5 class="card-title mb-0">Last month Expenses</h5>
                         </div>
                         <div class="row align-items-center mb-2 d-flex">
                             <div class="col-8">
@@ -157,7 +210,7 @@
                     <div class="card-statistic-3 p-4">
                         <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
                         <div class="mb-4">
-                            <h5 class="card-title mb-0">this month outcome</h5>
+                            <h5 class="card-title mb-0">this month Expenses</h5>
                         </div>
                         <div class="row align-items-center mb-2 d-flex">
                             <div class="col-8">
@@ -248,6 +301,14 @@
         </div>
     </div>
 <hr>
+<div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div style="width:100%; margin-top:25px;" id="chart_divs"></div>    
+            </div>
+        </div>
+    </div>
+<hr>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -256,5 +317,7 @@
         </div>
     </div>
 
+
+    
 </body>
 </html>

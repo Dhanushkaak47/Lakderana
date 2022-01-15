@@ -144,6 +144,8 @@ Route::middleware(['auth','liqor'])->group(function (){
 
         Route::get('/baritemdelete/{id}',[App\Http\Controllers\itemController::class,'deletedata']);
 
+        Route::post('/barDatafilter', [App\Http\Controllers\bardashboardController::class, 'bardashboardfilter']);
+
         
         
         Route::get('/bardashboard', function () {
