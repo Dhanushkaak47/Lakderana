@@ -99,7 +99,7 @@ class itemController extends Controller
         ->where('orderID', '=', $id)
         ->sum('total');
 
-        $updateWinner = DB::table('orders')->where('id', $id)->update([
+        $updateorder = DB::table('orders')->where('id', $id)->update([
             'payementstatus' => 1,
             'payementvalue' => $purchases,
         ]);
@@ -110,7 +110,7 @@ class itemController extends Controller
 
     public function deletedata($id)
     {
-        $updateWinner = DB::table('baritems')->where('id', $id)->update([
+        $deletedata = DB::table('baritems')->where('id', $id)->update([
             'status' => 0,
         ]);
         
