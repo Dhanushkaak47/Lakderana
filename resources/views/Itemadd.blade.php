@@ -128,7 +128,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-address-card" aria-hidden="true"></i></span>
                                             </div>
-                                            <textarea name="description" class="form-control" placeholder="Sell Price" required  rows="4"></textarea>
+                                            <textarea name="description" class="form-control" placeholder="Description" required  rows="4"></textarea>
                                             </div>
                                         </div>
                                     </div>

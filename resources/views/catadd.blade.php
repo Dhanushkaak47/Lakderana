@@ -65,7 +65,7 @@
                 </div>
                 <div class="form-group font-weight-bold text-warning">
                     <label for="exampleInputEmail1">Description</label>
-                    <input type="text" name="description" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Category Type">
+                    <input type="text" name="description" value="" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Description">
                 </div>
                
       </div>
