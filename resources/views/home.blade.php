@@ -15,7 +15,7 @@
                     @endif
 
                     <div class="card bg-danger text-center text-light font-weight-bold">
-                        <h3 class="mt-5 mb-5">Please use currect username and password</h3>
+                        <h3 class="mt-5 mb-5">Your current login credentials not elegible to this process. Please use correct username and password</h3>
                     </div>
                     
                 </div>
