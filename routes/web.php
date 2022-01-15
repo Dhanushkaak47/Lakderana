@@ -141,6 +141,10 @@ Route::middleware(['auth','liqor'])->group(function (){
         Route::post('/Catadd', [App\Http\Controllers\CatAddController::class, 'addcat']);
         
         Route::post('/addorder', [App\Http\Controllers\Ordercontroller::class, 'addorder']);
+
+        Route::get('/baritemdelete/{id}',[App\Http\Controllers\itemController::class,'deletedata']);
+
+        
         
         Route::get('/bardashboard', function () {
             return view('barDashboard');

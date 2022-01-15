@@ -82,6 +82,9 @@
     @include('include.adminnav')
 
     <div class="container mt-5">
+        <div class="row">
+        <h3 class="text-light">Employees</h3>    
+        </div>
         <div class="row justify-content-center">
             <div class="col-xl-4 col-lg-6">
                 <div class="card l-bg-cherry">
@@ -147,6 +150,9 @@
     </div>
 
     <div class="container mt-5">
+        <div class="row">
+        <h3 class="text-light">Bar Module expenses and income</h3>    
+        </div>
         <div class="row justify-content-center">
             <div class="col-xl-3 col-lg-6">
                 <div class="card l-bg-cherry">
@@ -175,7 +181,7 @@
                     <div class="card-statistic-3 p-4">
                         <div class="card-icon card-icon-large"><i class="fas fa-ticket-alt"></i></div>
                         <div class="mb-4">
-                            <h5 class="card-title mb-0">Last month outcome</h5>
+                            <h5 class="card-title mb-0">Last month expenses</h5>
                         </div>
                         <div class="row align-items-center mb-2 d-flex">
                             <div class="col-8">
