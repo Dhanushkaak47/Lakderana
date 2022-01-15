@@ -179,7 +179,8 @@ Route::middleware(['auth','rm'])->group(function (){
     Route::get('/getrooms/roomsno/{id}',[App\Http\Controllers\roomsController::class, 'getrooms']);
     Route::post('/reservationsave',[App\Http\Controllers\roomsController::class,'roomreserve']);
     Route::get('/export-reservation',[App\Http\Controllers\roomsController::class,'researvationreport']);
-    
+    Route::post('/roomtypeupdate',[App\Http\Controllers\roomsController::class,'roomType']);
+    Route::get('/deleteroom/{id}',[App\Http\Controllers\roomsController::class,'roomDelete']);
     
 });
 

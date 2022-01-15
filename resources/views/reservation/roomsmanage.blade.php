@@ -44,9 +44,8 @@
                     <thead>
                       <tr>
                         <th scope="col">#Room No</th>
-                        <th scope="col">Room Type</th>
+                        <th scope="col">Room Type <a href="#"><i class="fa fa-pencil-square text-warning" aria-hidden="true" data-toggle="modal" data-target=".edit"></i></a></th>
                         <th scope="col">Status</th>
-                        <th></th>
                         <th></th>
                       </tr>
                     </thead>
@@ -60,8 +59,8 @@
                         @else
                         <td class="bg-danger text-center"><b>Not available</b></td>
                         @endif   
-                        <td><a href="#"><i class="fa fa-pencil-square text-warning" aria-hidden="true"></i></a></td>
-                        <td><a href="#"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
+                        
+                        <td><a href="/deleteroom/{{$data->roomNo}}"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
                       </tr>
                       @endforeach
                     </tbody>
@@ -133,6 +132,52 @@
 
                                 <label for="contact" class="mt-2 font-weight-bold">charge per day (LKR)</label>
                                 <input type="text" name="price" id="price" class="form-control" placeholder="charge per day">
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <input type="submit" value="Save" class="btn btn-primary">
+                </div>
+              </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade edit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <form method="post" action="/roomtypeupdate">
+                @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title font-weight-bold" id="exampleModalLabel">Room Types</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <label for="contact" class="mt-2 font-weight-bold">Select room</label>
+                                <select name="roomname" id="roomname" class="form-control">
+                                    <option value="">Select</option>
+                                    @foreach($roomdata as $roomdatas)
+                                    <option value="{{$roomdatas->roomNo}}">{{$roomdatas->roomNo}}</option>
+                                    @endforeach
+                                </select>
+
+                                <label for="contact" class="mt-2 font-weight-bold">Room Type</label>
+                                <select name="roomtype" id="roomtype" class="form-control">
+                                    <option value="">Select</option>
+                                    @foreach($room as $roomdatas)
+                                    <option value="{{$roomdatas->id}}">{{$roomdatas->typename}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>

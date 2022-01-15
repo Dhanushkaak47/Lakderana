@@ -36,6 +36,7 @@ class roomsController extends Controller
     {
         # code...
         $room=roomtype::all();
+        $roomdata=rooms::all();
         $hotelid = ((Auth::user()->hotelID));
 
         $roomsdata=DB::table('rooms')
@@ -43,7 +44,7 @@ class roomsController extends Controller
         ->join('roomtypes','roomtypes.id','=','rooms.roomtype')
         ->where('rooms.hotelID',$hotelid)
         ->get();
-        return view('reservation.roomsmanage', compact('room','roomsdata'));
+        return view('reservation.roomsmanage', compact('room','roomsdata','roomdata'));
     }
 
     public function roomtypesave(Request $request)
@@ -127,5 +128,24 @@ class roomsController extends Controller
         return $pdf->download('Resevation'.$date.'.pdf');
 
         return view('reservation.resreport', compact('resdata'));
+    }
+
+    public function roomType(Request $request)
+    {
+        # code...
+        $updateWinner = DB::table('rooms')->where('roomNo', $request->roomname)->update([
+            'roomtype' => $request->roomtype,
+        ]);
+        return redirect()->back()->with('message','success');
+    }
+
+    public function roomDelete($id)
+    {
+        # code...
+        $updateWinner = DB::table('rooms')->where('roomNo', $id)->update([
+            'status' => 0,
+        ]);
+        
+        return redirect()->back()->with('message','success');
     }
 }
