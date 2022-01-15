@@ -19,7 +19,26 @@
     <div class="container-fluid mt-5 font-weight-bold text-uppercase">
         <div class="row justify-content-center mb-5">
             <div class="col-md-3">
-                <a href="/login" class="btn btn-success btn-block">LOGIN</a>
+                @guest
+        @if (Route::has('login'))
+            <a href="/login" class="btn btn-success btn-block">LOGIN</a>
+        @endif
+
+        @if (Route::has('register'))
+            
+        @endif
+        @else
+            <a class="btn btn-danger btn-block" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+            </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+        @endguest
+                
             </div>
         </div>
         <div class="row justify-content-center">
