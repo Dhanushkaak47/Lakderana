@@ -55,7 +55,7 @@
       </script>
 
 </head>
-<body style="background: rgb(25,69,157);">
+<body style="">
     @include('include.logo')
 
     @include('include.rmdashboard')

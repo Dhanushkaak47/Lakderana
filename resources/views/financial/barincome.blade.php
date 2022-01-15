@@ -42,7 +42,7 @@
   
           // Set chart options
           
-          var options = {title: 'Monthly Outcome (LKR)'}; 
+          var options = {title: 'Monthly Expenses (LKR)'}; 
           
           // Instantiate and draw our chart, passing in some options.
           var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
@@ -109,7 +109,7 @@
         </form> 
         <div class="row">
             <div class="col-md-6">
-                <h3>Outcomes</h3>
+                <h3>Expenses</h3>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -133,7 +133,12 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container mt-3">
+        <div class="row">
+        <div class="col">
+        <h3>Sales Statistics</h3>    
+        </div>    
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <table class="table">

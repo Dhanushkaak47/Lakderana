@@ -13,7 +13,7 @@
               <a class="nav-link " href="/bardashboard">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="/"data-toggle="modal" data-target="#order">Item Add</a>
+              <a class="nav-link " href="/"data-toggle="modal" data-target="#order">New order</a>
             </li>
             <li class="nav-item">
               <a class="nav-link " href="/supplier">Supplier Manage</a>

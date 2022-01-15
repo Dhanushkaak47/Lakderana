@@ -18,6 +18,23 @@
 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
   Add New Category
 </button>
+@if(session()->has('message'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Successfully</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@if(session()->has('delete'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Deleted Successfully</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
 
 <!-- Modal -->
 <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -36,11 +53,7 @@
                   {{$error}}
                </div>
             @endforeach
-            @if(session()->has('message'))
-        <div class="alert alert-success">
-            {{ session()->get('message') }}
-        </div>
-    @endif
+
       <div class="modal-body">
                 <div class="form-group font-weight-bold text-warning">
                     <label for="name">Category ID</label>
@@ -77,20 +90,31 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Category Name</th>
-      <th scope="col">Category type</th>
-      <th scope="col">
-          
-      </th>
-      
+      <th scope="col">Description</th>
+      <th scope="col">Craeted date</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
+    @foreach($data as $datas)
+    @if($datas->status)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{$datas->id}}</th>
+      <td>{{$datas->catname}}</td>
+      <td>{{$datas->description}}</td>
+      <td>{{$datas->created_at}}</td>
+      <td><a href="/deletecat/{{$datas->id}}"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
     </tr>
+    @else
+    <tr class="bg-danger">
+      <th scope="row">{{$datas->id}}</th>
+      <td>{{$datas->catname}}</td>
+      <td>{{$datas->description}}</td>
+      <td>{{$datas->created_at}}</td>
+      <td><a href="/catdataupdate/{{$datas->id}}"><i class="fa fa-arrow-up text-success" aria-hidden="true"></i></a></td>
+    </tr>
+    @endif
+    @endforeach
   </tbody>
 </table>
             </div>
