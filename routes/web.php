@@ -131,9 +131,10 @@ Route::middleware(['auth','liqor'])->group(function (){
         
         Route::post('/itemsave', [App\Http\Controllers\itemController::class, 'saveitem']);
         
-        Route::get('/CatAdd', function () {
-            return view('catadd');
-        });
+        
+        Route::get('/CatAdd',[App\Http\Controllers\CatAddController::class,'openpage']);
+        Route::get('/deletecat/{id}',[App\Http\Controllers\CatAddController::class,'deletedata']);
+        Route::get('/catdataupdate/{id}',[App\Http\Controllers\CatAddController::class,'updatedelete']);
         
         Route::post('/Addsuppliers', [App\Http\Controllers\AddSupplier::class, 'addsup']);
         

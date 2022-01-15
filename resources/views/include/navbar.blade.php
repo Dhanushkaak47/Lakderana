@@ -13,7 +13,7 @@
               <a class="nav-link " href="/bardashboard">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="/"data-toggle="modal" data-target="#order">Item Add</a>
+              <a class="nav-link " href="/"data-toggle="modal" data-target="#order">New order</a>
             </li>
             <li class="nav-item">
               <a class="nav-link " href="/supplier">Supplier Manage</a>
@@ -114,7 +114,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content bg-dark">
       <div class="modal-header text-light">
-        <h3 class="modal-title" id="exampleModalLabel">Add New Supplier</h3>
+        <h3 class="modal-title" id="exampleModalLabel">Add New Order</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
